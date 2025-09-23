@@ -1,0 +1,135 @@
+{
+  "Thema": "Quadratische Gleichungen",
+  "Fragen": [
+    {
+      "Frage": "Welche Form hat eine quadratische Gleichung?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "ax² + bx + c = 0",
+          "Richtig": true,
+          "Kommentar": "Richtig! Das ist die Normalform einer quadratischen Gleichung."
+        },
+        {
+          "Antwort": "ax + b = 0",
+          "Richtig": false,
+          "Kommentar": "Das ist eine lineare Gleichung."
+        },
+        {
+          "Antwort": "ax³ + bx² + cx + d = 0",
+          "Richtig": false,
+          "Kommentar": "Das ist eine kubische Gleichung."
+        },
+        {
+          "Antwort": "x² = a",
+          "Richtig": false,
+          "Kommentar": "Das ist nur eine spezielle Form, nicht die allgemeine."
+        }
+      ]
+    },
+    {
+      "Frage": "Wie viele Lösungen kann eine quadratische Gleichung maximal haben?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "2",
+          "Richtig": true,
+          "Kommentar": "Korrekt! Eine quadratische Gleichung hat maximal zwei reelle Lösungen."
+        },
+        {
+          "Antwort": "1",
+          "Richtig": false,
+          "Kommentar": "Es können auch zwei Lösungen existieren."
+        },
+        {
+          "Antwort": "3",
+          "Richtig": false,
+          "Kommentar": "Eine quadratische Gleichung hat maximal zwei Lösungen."
+        },
+        {
+          "Antwort": "unendlich viele",
+          "Richtig": false,
+          "Kommentar": "Eine quadratische Gleichung hat maximal zwei Lösungen."
+        }
+      ]
+    },
+    {
+      "Frage": "Wie heißt die Formel zur Lösung quadratischer Gleichungen?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Mitternachtsformel / abc-Formel",
+          "Richtig": true,
+          "Kommentar": "Richtig! Die Mitternachtsformel lautet x = (-b ± √(b²-4ac)) / 2a"
+        },
+        {
+          "Antwort": "Binomische Formel",
+          "Richtig": false,
+          "Kommentar": "Binomische Formeln dienen zum Ausmultiplizieren."
+        },
+        {
+          "Antwort": "Pythagoras-Formel",
+          "Richtig": false,
+          "Kommentar": "Der Satz des Pythagoras bezieht sich auf rechtwinklige Dreiecke."
+        },
+        {
+          "Antwort": "Eulersche Formel",
+          "Richtig": false,
+          "Kommentar": "Die Eulersche Formel gehört zur komplexen Analysis."
+        }
+      ]
+    },
+    {
+      "Frage": "Was ist die Diskriminante einer quadratischen Gleichung ax² + bx + c = 0?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "b² - 4ac",
+          "Richtig": true,
+          "Kommentar": "Perfekt! Die Diskriminante bestimmt die Anzahl der Lösungen."
+        },
+        {
+          "Antwort": "b² + 4ac",
+          "Richtig": false,
+          "Kommentar": "Es muss ein Minus sein: b² - 4ac"
+        },
+        {
+          "Antwort": "2a",
+          "Richtig": false,
+          "Kommentar": "Das ist der Nenner in der Lösungsformel."
+        },
+        {
+          "Antwort": "√(b² - 4ac)",
+          "Richtig": false,
+          "Kommentar": "Die Diskriminante ist b² - 4ac, ohne Wurzel."
+        }
+      ]
+    },
+    {
+      "Frage": "Was bedeutet es, wenn die Diskriminante gleich 0 ist?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Die Gleichung hat genau eine Lösung (Doppellösung)",
+          "Richtig": true,
+          "Kommentar": "Richtig! Bei D = 0 gibt es eine doppelte Nullstelle."
+        },
+        {
+          "Antwort": "Die Gleichung hat keine Lösung",
+          "Richtig": false,
+          "Kommentar": "Bei D < 0 gibt es keine reelle Lösung."
+        },
+        {
+          "Antwort": "Die Gleichung hat zwei verschiedene Lösungen",
+          "Richtig": false,
+          "Kommentar": "Bei D > 0 gibt es zwei verschiedene Lösungen."
+        },
+        {
+          "Antwort": "Die Gleichung hat unendlich viele Lösungen",
+          "Richtig": false,
+          "Kommentar": "Eine quadratische Gleichung hat niemals unendlich viele Lösungen."
+        }
+      ]
+    }
+  ]
+}

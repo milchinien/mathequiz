@@ -1,0 +1,135 @@
+{
+  "Thema": "Das Periodensystem der Elemente",
+  "Fragen": [
+    {
+      "Frage": "Wie viele Hauptgruppen hat das Periodensystem?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "8",
+          "Richtig": true,
+          "Kommentar": "Richtig! Es gibt 8 Hauptgruppen (I-VIII)."
+        },
+        {
+          "Antwort": "7",
+          "Richtig": false,
+          "Kommentar": "Es gibt 8 Hauptgruppen, nicht 7."
+        },
+        {
+          "Antwort": "10",
+          "Richtig": false,
+          "Kommentar": "Du verwechselst das mit den Nebengruppen."
+        },
+        {
+          "Antwort": "18",
+          "Richtig": false,
+          "Kommentar": "18 ist die Gesamtzahl aller Gruppen (Haupt- und Nebengruppen)."
+        }
+      ]
+    },
+    {
+      "Frage": "Welches Element hat das chemische Symbol 'Au'?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Gold",
+          "Richtig": true,
+          "Kommentar": "Korrekt! Au kommt vom lateinischen 'Aurum'."
+        },
+        {
+          "Antwort": "Silber",
+          "Richtig": false,
+          "Kommentar": "Silber hat das Symbol Ag (Argentum)."
+        },
+        {
+          "Antwort": "Aluminium",
+          "Richtig": false,
+          "Kommentar": "Aluminium hat das Symbol Al."
+        },
+        {
+          "Antwort": "Argon",
+          "Richtig": false,
+          "Kommentar": "Argon hat das Symbol Ar."
+        }
+      ]
+    },
+    {
+      "Frage": "In welcher Gruppe stehen die Edelgase?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "VIII. Hauptgruppe (Gruppe 18)",
+          "Richtig": true,
+          "Kommentar": "Perfekt! Die Edelgase stehen ganz rechts im Periodensystem."
+        },
+        {
+          "Antwort": "I. Hauptgruppe",
+          "Richtig": false,
+          "Kommentar": "In der I. Hauptgruppe stehen die Alkalimetalle."
+        },
+        {
+          "Antwort": "VII. Hauptgruppe",
+          "Richtig": false,
+          "Kommentar": "Das sind die Halogene."
+        },
+        {
+          "Antwort": "II. Hauptgruppe",
+          "Richtig": false,
+          "Kommentar": "Das sind die Erdalkalimetalle."
+        }
+      ]
+    },
+    {
+      "Frage": "Wie viele Elektronen passen maximal in die erste Elektronenschale?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "2",
+          "Richtig": true,
+          "Kommentar": "Richtig! Die K-Schale fasst maximal 2 Elektronen."
+        },
+        {
+          "Antwort": "8",
+          "Richtig": false,
+          "Kommentar": "8 Elektronen passen in die zweite Schale (L-Schale)."
+        },
+        {
+          "Antwort": "1",
+          "Richtig": false,
+          "Kommentar": "Es passen 2 Elektronen in die erste Schale."
+        },
+        {
+          "Antwort": "18",
+          "Richtig": false,
+          "Kommentar": "18 Elektronen passen in die dritte Schale (M-Schale)."
+        }
+      ]
+    },
+    {
+      "Frage": "Was haben alle Elemente einer Hauptgruppe gemeinsam?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Die gleiche Anzahl an Valenzelektronen",
+          "Richtig": true,
+          "Kommentar": "Genau! Das bestimmt ihre chemischen Eigenschaften."
+        },
+        {
+          "Antwort": "Die gleiche Atommasse",
+          "Richtig": false,
+          "Kommentar": "Die Atommasse nimmt in einer Gruppe von oben nach unten zu."
+        },
+        {
+          "Antwort": "Die gleiche Anzahl an Protonen",
+          "Richtig": false,
+          "Kommentar": "Die Protonenzahl ist für jedes Element unterschiedlich."
+        },
+        {
+          "Antwort": "Die gleiche Anzahl an Schalen",
+          "Richtig": false,
+          "Kommentar": "Elemente einer Periode haben die gleiche Anzahl an Schalen."
+        }
+      ]
+    }
+  ]
+}

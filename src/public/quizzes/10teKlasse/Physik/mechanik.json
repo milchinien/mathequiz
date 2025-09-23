@@ -1,0 +1,135 @@
+{
+  "Thema": "Mechanik - Bewegung und Kräfte",
+  "Fragen": [
+    {
+      "Frage": "Wie lautet das zweite Newtonsche Gesetz?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "F = m × a",
+          "Richtig": true,
+          "Kommentar": "Korrekt! Kraft = Masse × Beschleunigung"
+        },
+        {
+          "Antwort": "E = m × c²",
+          "Richtig": false,
+          "Kommentar": "Das ist Einsteins Energie-Masse-Äquivalenz."
+        },
+        {
+          "Antwort": "s = v × t",
+          "Richtig": false,
+          "Kommentar": "Das ist die Formel für gleichförmige Bewegung."
+        },
+        {
+          "Antwort": "p = m × v",
+          "Richtig": false,
+          "Kommentar": "Das ist die Formel für den Impuls."
+        }
+      ]
+    },
+    {
+      "Frage": "Was ist die Einheit der Kraft?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Newton (N)",
+          "Richtig": true,
+          "Kommentar": "Richtig! 1 Newton = 1 kg × m/s²"
+        },
+        {
+          "Antwort": "Joule (J)",
+          "Richtig": false,
+          "Kommentar": "Joule ist die Einheit der Energie."
+        },
+        {
+          "Antwort": "Watt (W)",
+          "Richtig": false,
+          "Kommentar": "Watt ist die Einheit der Leistung."
+        },
+        {
+          "Antwort": "Pascal (Pa)",
+          "Richtig": false,
+          "Kommentar": "Pascal ist die Einheit des Drucks."
+        }
+      ]
+    },
+    {
+      "Frage": "Ein Auto fährt mit konstanter Geschwindigkeit von 72 km/h. Wie groß ist die Geschwindigkeit in m/s?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "20 m/s",
+          "Richtig": true,
+          "Kommentar": "Perfekt! 72 km/h ÷ 3,6 = 20 m/s"
+        },
+        {
+          "Antwort": "72 m/s",
+          "Richtig": false,
+          "Kommentar": "Du musst km/h in m/s umrechnen: durch 3,6 teilen."
+        },
+        {
+          "Antwort": "200 m/s",
+          "Richtig": false,
+          "Kommentar": "Das wäre viel zu schnell. Teile durch 3,6."
+        },
+        {
+          "Antwort": "7,2 m/s",
+          "Richtig": false,
+          "Kommentar": "Du hast durch 10 statt durch 3,6 geteilt."
+        }
+      ]
+    },
+    {
+      "Frage": "Was versteht man unter dem Trägheitsgesetz?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Ein Körper verharrt im Zustand der Ruhe oder gleichförmigen Bewegung, solange keine Kraft auf ihn wirkt",
+          "Richtig": true,
+          "Kommentar": "Richtig! Das ist das erste Newtonsche Gesetz."
+        },
+        {
+          "Antwort": "Jeder Körper hat eine Masse",
+          "Richtig": false,
+          "Kommentar": "Das ist zwar richtig, aber nicht das Trägheitsgesetz."
+        },
+        {
+          "Antwort": "Kraft gleich Gegenkraft",
+          "Richtig": false,
+          "Kommentar": "Das ist das dritte Newtonsche Gesetz (actio = reactio)."
+        },
+        {
+          "Antwort": "Energie kann nicht erzeugt oder vernichtet werden",
+          "Richtig": false,
+          "Kommentar": "Das ist der Energieerhaltungssatz."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche Aussage über die Fallbeschleunigung auf der Erde ist korrekt?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Sie beträgt etwa 9,81 m/s²",
+          "Richtig": true,
+          "Kommentar": "Korrekt! Der genaue Wert variiert leicht je nach Ort."
+        },
+        {
+          "Antwort": "Sie beträgt genau 10 m/s²",
+          "Richtig": false,
+          "Kommentar": "Das ist eine Näherung. Der genauere Wert ist 9,81 m/s²."
+        },
+        {
+          "Antwort": "Sie hängt von der Masse des fallenden Körpers ab",
+          "Richtig": false,
+          "Kommentar": "Die Fallbeschleunigung ist unabhängig von der Masse."
+        },
+        {
+          "Antwort": "Sie ist überall auf der Erde exakt gleich",
+          "Richtig": false,
+          "Kommentar": "Sie variiert leicht je nach Höhe und Breitengrad."
+        }
+      ]
+    }
+  ]
+}

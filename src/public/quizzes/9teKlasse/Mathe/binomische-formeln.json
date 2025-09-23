@@ -1,0 +1,135 @@
+{
+  "Thema": "Binomische Formeln",
+  "Fragen": [
+    {
+      "Frage": "Wie lautet die erste binomische Formel?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "(a + b)² = a² + 2ab + b²",
+          "Richtig": true,
+          "Kommentar": "Korrekt! Das ist die erste binomische Formel."
+        },
+        {
+          "Antwort": "(a - b)² = a² - 2ab + b²",
+          "Richtig": false,
+          "Kommentar": "Das ist die zweite binomische Formel."
+        },
+        {
+          "Antwort": "(a + b)(a - b) = a² - b²",
+          "Richtig": false,
+          "Kommentar": "Das ist die dritte binomische Formel."
+        },
+        {
+          "Antwort": "(a + b)² = a² + b²",
+          "Richtig": false,
+          "Kommentar": "Der mittlere Term 2ab fehlt hier."
+        }
+      ]
+    },
+    {
+      "Frage": "Was ergibt (5 + 3)²?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "64",
+          "Richtig": true,
+          "Kommentar": "Richtig! (5 + 3)² = 8² = 64"
+        },
+        {
+          "Antwort": "34",
+          "Richtig": false,
+          "Kommentar": "Du hast vermutlich 5² + 3² = 25 + 9 = 34 gerechnet. Der mittlere Term fehlt."
+        },
+        {
+          "Antwort": "16",
+          "Richtig": false,
+          "Kommentar": "Das wäre nur 2 × 8 = 16."
+        },
+        {
+          "Antwort": "49",
+          "Richtig": false,
+          "Kommentar": "Nicht ganz, überprüfe deine Berechnung."
+        }
+      ]
+    },
+    {
+      "Frage": "Wie kann man (x - 4)² ausschreiben?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "x² - 8x + 16",
+          "Richtig": true,
+          "Kommentar": "Perfekt! Nach der zweiten binomischen Formel."
+        },
+        {
+          "Antwort": "x² + 8x + 16",
+          "Richtig": false,
+          "Kommentar": "Achte auf das Vorzeichen des mittleren Terms bei der zweiten binomischen Formel."
+        },
+        {
+          "Antwort": "x² - 16",
+          "Richtig": false,
+          "Kommentar": "Der mittlere Term -8x fehlt."
+        },
+        {
+          "Antwort": "x² - 4x + 16",
+          "Richtig": false,
+          "Kommentar": "Der mittlere Term muss -8x sein (2 × x × 4)."
+        }
+      ]
+    },
+    {
+      "Frage": "Was ergibt (a + 5)(a - 5)?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "a² - 25",
+          "Richtig": true,
+          "Kommentar": "Korrekt! Das ist die dritte binomische Formel."
+        },
+        {
+          "Antwort": "a² + 25",
+          "Richtig": false,
+          "Kommentar": "Bei der dritten binomischen Formel entsteht eine Differenz."
+        },
+        {
+          "Antwort": "a² - 10a + 25",
+          "Richtig": false,
+          "Kommentar": "Das wäre (a - 5)²."
+        },
+        {
+          "Antwort": "a² + 10a + 25",
+          "Richtig": false,
+          "Kommentar": "Das wäre (a + 5)²."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche der folgenden Aussagen über binomische Formeln ist richtig?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Sie helfen beim schnellen Ausmultiplizieren bestimmter Terme",
+          "Richtig": true,
+          "Kommentar": "Genau! Das ist der Hauptzweck der binomischen Formeln."
+        },
+        {
+          "Antwort": "Es gibt insgesamt 5 binomische Formeln",
+          "Richtig": false,
+          "Kommentar": "Es gibt nur 3 binomische Formeln."
+        },
+        {
+          "Antwort": "Sie funktionieren nur mit positiven Zahlen",
+          "Richtig": false,
+          "Kommentar": "Binomische Formeln funktionieren mit allen reellen Zahlen."
+        },
+        {
+          "Antwort": "Sie wurden von Isaac Newton entdeckt",
+          "Richtig": false,
+          "Kommentar": "Die binomischen Formeln waren schon in der Antike bekannt."
+        }
+      ]
+    }
+  ]
+}
