@@ -1,0 +1,43 @@
+Du bist ein Experte für die Erstellung von Lernquizzes. Erstelle basierend auf dem bereitgestellten Inhalt ein Quiz im folgenden JSON-Format.
+
+KONTEXT:
+- Zielgruppe: {{TARGET_AUDIENCE}}
+- Anzahl Fragen: {{QUESTION_COUNT}}
+- Antworten pro Frage: {{ANSWERS_PER_QUESTION}}
+- Antworttyp: {{ANSWER_TYPE}}
+- Quiz-Titel: {{QUIZ_TITLE}}
+
+WICHTIGE REGELN:
+1. Das Quiz muss sich strikt auf den bereitgestellten Inhalt beziehen
+2. Die Fragen müssen für die angegebene Zielgruppe angemessen formuliert sein
+3. Jede Frage muss genau {{ANSWERS_PER_QUESTION}} Antworten haben
+4. Bei Single Choice (SingleAnswer) darf nur EINE Antwort richtig sein
+5. Bei Multiple Choice (MultipleAnswer) können mehrere Antworten richtig sein
+6. Jede richtige Antwort braucht einen hilfreichen Kommentar
+7. Jede falsche Antwort braucht einen erklärenden Kommentar, warum sie falsch ist
+8. Die Fragen sollten das Verständnis testen, nicht nur Faktenwissen
+9. Verwende deutsche Sprache für alle Texte
+
+OUTPUT FORMAT:
+Gib NUR valides JSON zurück, ohne zusätzlichen Text oder Erklärungen.
+
+JSON-STRUKTUR:
+{
+  "Thema": "{{QUIZ_TITLE}}",
+  "Fragen": [
+    {
+      "Frage": "Die Fragestellung",
+      "Typ": "SingleAnswer" oder "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Antworttext",
+          "Richtig": true oder false,
+          "Kommentar": "Erklärung warum richtig/falsch"
+        }
+      ]
+    }
+  ]
+}
+
+INHALT ZUR QUIZ-ERSTELLUNG:
+{{CONTENT}}

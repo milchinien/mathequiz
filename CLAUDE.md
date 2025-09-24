@@ -13,7 +13,7 @@ From the `src/` directory:
 
 ## Architecture
 
-This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v4. The application serves math quizzes from JSON files with two feedback modes: immediate and summary.
+This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v4. The application serves math quizzes from JSON files with two feedback modes: immediate and summary. Features **AI-powered quiz generation** using OpenAI and dynamic content shuffling.
 
 ### Key Components
 
@@ -22,14 +22,30 @@ This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v4. T
 2. **API Routes**:
    - `/api/quizzes` - Returns the quiz directory structure
    - `/api/quiz/[...path]` - Fetches specific quiz JSON files
+   - `/api/generate-quiz` - AI-powered quiz generation using OpenAI
+   - `/api/save-quiz` - Saves generated quizzes to file system
+   - `/api/categories` - Creates new quiz categories and subcategories
+   - `/api/scrape` - Extracts text content from URLs for quiz generation
 
 3. **Core Pages**:
-   - Home page (`/`) - Quiz selector interface
-   - Quiz page (`/quiz/[...path]`) - Dynamic quiz player with immediate or summary feedback modes
+   - Home page (`/`) - Quiz selector interface with link to quiz generation
+   - Quiz page (`/quiz/[...path]`) - Dynamic quiz player with shuffled questions/answers and immediate or summary feedback modes
+   - Generate page (`/generate`) - AI-powered quiz creation interface
 
-4. **Type System**: Central TypeScript definitions in `src/types/quiz.ts` defining Quiz, Question, Answer, and UserAnswer structures.
+4. **Quiz Generation System**:
+   - **Content Input**: Text, file upload (TXT/MD), or URL scraping
+   - **AI Integration**: OpenAI GPT-4o with structured prompts in `src/prompts/quiz-generation.txt`
+   - **Category Management**: Dynamic creation of categories and subcategories
+   - **Quiz Preview**: Review generated quiz before saving
 
-5. **Component Architecture**: React components in `src/components/` handle quiz display, questions, results, and feedback toasts.
+5. **Dynamic Shuffling**:
+   - **Question Shuffling**: Questions appear in random order each playthrough
+   - **Answer Shuffling**: Answer options randomized within each question using Fisher-Yates algorithm
+   - **Index Mapping**: Original indices preserved for result tracking
+
+6. **Type System**: Central TypeScript definitions in `src/types/quiz.ts` defining Quiz, Question, Answer, and UserAnswer structures.
+
+7. **Component Architecture**: React components in `src/components/` handle quiz display, generation UI, questions, results, and feedback toasts.
 
 ## Project Structure
 
@@ -37,3 +53,14 @@ The codebase is organized within the `src/` directory as the main Next.js applic
 - Working directory for all commands is `/home/tobias/src/mathequiz/src/`
 - Quiz content files are in `public/quizzes/` with hierarchical category organization
 - Next.js App Router structure with API routes and dynamic routing
+- AI prompts stored in `prompts/` directory
+- Environment variables in `.env.local` (requires OPENAI_API_KEY for quiz generation)
+
+## Quiz Generation Features
+
+- **AI-Powered**: Uses OpenAI GPT-4o to generate quiz questions from any text content
+- **Multiple Input Methods**: Direct text input, file upload (TXT/MD), or URL scraping
+- **Flexible Configuration**: Customizable question count, answer options, single/multiple choice, target audience
+- **Dynamic Categories**: Create new quiz categories and subcategories on-the-fly
+- **Preview System**: Review and edit generated quizzes before saving
+- **Automatic Shuffling**: Both questions and answers are randomized for unpredictable quiz experiences

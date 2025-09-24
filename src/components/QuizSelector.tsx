@@ -40,6 +40,15 @@ export default function QuizSelector() {
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6 text-center">Quiz-Auswahl</h1>
 
+      <div className="mb-6 text-center">
+        <Link
+          href="/generate"
+          className="inline-block px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
+        >
+          🎯 Neues Quiz generieren
+        </Link>
+      </div>
+
       <ModeToggle mode={mode} onModeChange={setMode} />
 
       <div className="grid md:grid-cols-3 gap-6">

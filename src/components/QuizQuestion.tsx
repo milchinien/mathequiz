@@ -1,7 +1,7 @@
 'use client';
 
 import { Question, Answer } from '@/types/quiz';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import FeedbackToast from './FeedbackToast';
 
 interface QuizQuestionProps {
@@ -12,6 +12,10 @@ interface QuizQuestionProps {
   onAnswer: (selectedAnswers: number[], isCorrect: boolean, feedbackMessage?: string) => void;
   onNext: () => void;
   isLastQuestion: boolean;
+}
+
+interface ShuffledAnswer extends Answer {
+  originalIndex: number;
 }
 
 export default function QuizQuestion({
@@ -29,6 +33,23 @@ export default function QuizQuestion({
   const [toastIsCorrect, setToastIsCorrect] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [toastKey, setToastKey] = useState(0);
+
+  // Shuffle answers once per question
+  const shuffledAnswers = useMemo<ShuffledAnswer[]>(() => {
+    const answersWithIndex = question.Antworten.map((answer, index) => ({
+      ...answer,
+      originalIndex: index
+    }));
+
+    // Fisher-Yates shuffle algorithm
+    const shuffled = [...answersWithIndex];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled;
+  }, [question, questionNumber]); // Re-shuffle when question changes
 
   useEffect(() => {
     setSelectedAnswers([]);
@@ -52,9 +73,14 @@ export default function QuizQuestion({
   };
 
   const checkAnswer = () => {
-    const isCorrect = selectedAnswers.every(index =>
+    // Convert shuffled indices back to original indices for checking correctness
+    const originalSelectedIndices = selectedAnswers.map(shuffledIndex =>
+      shuffledAnswers[shuffledIndex].originalIndex
+    );
+
+    const isCorrect = originalSelectedIndices.every(index =>
       question.Antworten[index].Richtig
-    ) && selectedAnswers.length === question.Antworten.filter(a => a.Richtig).length;
+    ) && originalSelectedIndices.length === question.Antworten.filter(a => a.Richtig).length;
 
     return isCorrect;
   };
@@ -66,20 +92,33 @@ export default function QuizQuestion({
     setSubmitted(true);
 
     if (mode === 'immediate') {
-      const wrongAnswers = selectedAnswers.filter(index => !question.Antworten[index].Richtig);
+      // Convert shuffled indices back to original indices
+      const originalSelectedIndices = selectedAnswers.map(shuffledIndex =>
+        shuffledAnswers[shuffledIndex].originalIndex
+      );
+
+      const wrongAnswers = selectedAnswers.filter(shuffledIndex =>
+        !shuffledAnswers[shuffledIndex].Richtig
+      );
+
       const feedbackMessage = wrongAnswers.length > 0
-        ? question.Antworten[wrongAnswers[0]].Kommentar
+        ? shuffledAnswers[wrongAnswers[0]].Kommentar
         : selectedAnswers.length > 0
-        ? question.Antworten[selectedAnswers[0]].Kommentar
+        ? shuffledAnswers[selectedAnswers[0]].Kommentar
         : '';
 
       setToastIsCorrect(isCorrect);
       setToastMessage(feedbackMessage);
       setShowToast(true);
 
-      onAnswer(selectedAnswers, isCorrect, feedbackMessage);
+      // Pass original indices to maintain compatibility with existing system
+      onAnswer(originalSelectedIndices, isCorrect, feedbackMessage);
     } else {
-      onAnswer(selectedAnswers, isCorrect);
+      // Convert shuffled indices back to original indices
+      const originalSelectedIndices = selectedAnswers.map(shuffledIndex =>
+        shuffledAnswers[shuffledIndex].originalIndex
+      );
+      onAnswer(originalSelectedIndices, isCorrect);
     }
   };
 
@@ -109,9 +148,9 @@ export default function QuizQuestion({
       <h2 className="text-xl font-semibold mb-6">{question.Frage}</h2>
 
       <div className="space-y-3 mb-6">
-        {question.Antworten.map((answer, index) => (
+        {shuffledAnswers.map((answer, index) => (
           <div
-            key={index}
+            key={`${answer.originalIndex}-${index}`}
             onClick={() => handleAnswerSelect(index)}
             className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
               selectedAnswers.includes(index)

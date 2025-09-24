@@ -1,0 +1,265 @@
+{
+  "Thema": "Binomische Formeln - Grundlagen",
+  "Fragen": [
+    {
+      "Frage": "Was besagt die erste binomische Formel?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "(a + b)^2 = a^2 + 2ab + b^2",
+          "Richtig": true,
+          "Kommentar": "Das ist die korrekte Formel, die die erste binomische Formel darstellt."
+        },
+        {
+          "Antwort": "(a - b)^2 = a^2 - 2ab + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist die zweite binomische Formel, nicht die erste."
+        },
+        {
+          "Antwort": "(a + b)(a - b) = a^2 - b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist die dritte binomische Formel, nicht die erste."
+        },
+        {
+          "Antwort": "(a + b)^2 = a^2 + b^2",
+          "Richtig": false,
+          "Kommentar": "Diese Formel lässt den wichtigen Mittelterm 2ab aus."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche der folgenden Terme ist das Ergebnis der zweiten binomischen Formel?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "a^2 - 2ab + b^2",
+          "Richtig": true,
+          "Kommentar": "Das ist das korrekte Ergebnis der zweiten binomischen Formel."
+        },
+        {
+          "Antwort": "a^2 + 2ab + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist das Ergebnis der ersten binomischen Formel."
+        },
+        {
+          "Antwort": "a^2 - b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist das Ergebnis der dritten binomischen Formel."
+        },
+        {
+          "Antwort": "a^2 + b^2",
+          "Richtig": false,
+          "Kommentar": "Diese Formel fehlt der Mittelterm und ist kein Ergebnis einer binomischen Formel."
+        }
+      ]
+    },
+    {
+      "Frage": "Wie lautet die dritte binomische Formel?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "(a + b)(a - b) = a^2 - b^2",
+          "Richtig": true,
+          "Kommentar": "Das ist die korrekte Darstellung der dritten binomischen Formel."
+        },
+        {
+          "Antwort": "(a + b)^2 = a^2 + 2ab + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist die erste binomische Formel, nicht die dritte."
+        },
+        {
+          "Antwort": "(a - b)^2 = a^2 - 2ab + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist die zweite binomische Formel, nicht die dritte."
+        },
+        {
+          "Antwort": "(a - b)^2 = a^2 + b^2",
+          "Richtig": false,
+          "Kommentar": "Diese Darstellung fehlt der Mittelterm und ist nicht korrekt."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche Begriffe sind in der ersten binomischen Formel enthalten?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "a^2",
+          "Richtig": true,
+          "Kommentar": "a^2 ist ein Bestandteil der ersten binomischen Formel."
+        },
+        {
+          "Antwort": "2ab",
+          "Richtig": true,
+          "Kommentar": "2ab ist der Mittelterm der ersten binomischen Formel."
+        },
+        {
+          "Antwort": "b^2",
+          "Richtig": true,
+          "Kommentar": "b^2 ist ein Bestandteil der ersten binomischen Formel."
+        },
+        {
+          "Antwort": "a^2 - b^2",
+          "Richtig": false,
+          "Kommentar": "a^2 - b^2 gehört zur dritten binomischen Formel, nicht zur ersten."
+        }
+      ]
+    },
+    {
+      "Frage": "Was ist das Ergebnis von (x - 3)^2?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "x^2 - 6x + 9",
+          "Richtig": true,
+          "Kommentar": "Das ist das korrekte Ergebnis der Anwendung der zweiten binomischen Formel."
+        },
+        {
+          "Antwort": "x^2 - 9",
+          "Richtig": false,
+          "Kommentar": "Dieses Ergebnis fehlt der Mittelterm und entspricht der dritten binomischen Formel."
+        },
+        {
+          "Antwort": "x^2 + 9",
+          "Richtig": false,
+          "Kommentar": "Dieses Ergebnis berücksichtigt nicht den linearen Term -6x."
+        },
+        {
+          "Antwort": "x^2 - 3x + 9",
+          "Richtig": false,
+          "Kommentar": "Der lineare Term sollte -6x sein, nicht -3x."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche der folgenden Aussagen trifft auf die binomischen Formeln zu?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Sie beschreiben die Entwicklung von Quadraten von Summen und Differenzen.",
+          "Richtig": true,
+          "Kommentar": "Das ist eine der Hauptanwendungen der binomischen Formeln."
+        },
+        {
+          "Antwort": "Sie gelten nur für positive Zahlen.",
+          "Richtig": false,
+          "Kommentar": "Die binomischen Formeln gelten für alle reellen Zahlen."
+        },
+        {
+          "Antwort": "Sie werden benutzt, um Ausdrücke zu faktorisieren.",
+          "Richtig": true,
+          "Kommentar": "Die binomischen Formeln können auch zur Faktorisierung von Ausdrücken verwendet werden."
+        },
+        {
+          "Antwort": "Sie sind nur in der Algebra relevant.",
+          "Richtig": false,
+          "Kommentar": "Binomische Formeln sind in vielen Bereichen der Mathematik relevant."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Ausdruck entspricht (a + b)(a - b)?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "a^2 - b^2",
+          "Richtig": true,
+          "Kommentar": "Das ist das Ergebnis der dritten binomischen Formel."
+        },
+        {
+          "Antwort": "a^2 + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist nicht korrekt, da der gemischte Term fehlt."
+        },
+        {
+          "Antwort": "a^2 - 2ab + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist das Ergebnis der zweiten binomischen Formel."
+        },
+        {
+          "Antwort": "a^2 + 2ab + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist das Ergebnis der ersten binomischen Formel."
+        }
+      ]
+    },
+    {
+      "Frage": "Wie kann man (5 + x)^2 entwickeln?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "25 + 10x + x^2",
+          "Richtig": true,
+          "Kommentar": "Das ist das korrekte Ergebnis der Anwendung der ersten binomischen Formel."
+        },
+        {
+          "Antwort": "25 - 10x + x^2",
+          "Richtig": false,
+          "Kommentar": "Das Vorzeichen des linearen Terms sollte positiv sein."
+        },
+        {
+          "Antwort": "25 + x^2",
+          "Richtig": false,
+          "Kommentar": "Der lineare Term 10x fehlt."
+        },
+        {
+          "Antwort": "5x + x^2",
+          "Richtig": false,
+          "Kommentar": "Dieses Ergebnis ist unvollständig und falsch entwickelt."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche der folgenden ist KEINE binomische Formel?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "(a + b)^2 = a^2 + b^2",
+          "Richtig": true,
+          "Kommentar": "Diese Darstellung ist falsch, da der Mittelterm 2ab fehlt."
+        },
+        {
+          "Antwort": "(a - b)^2 = a^2 - 2ab + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist die richtige Darstellung der zweiten binomischen Formel."
+        },
+        {
+          "Antwort": "(a + b)(a - b) = a^2 - b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist die richtige Darstellung der dritten binomischen Formel."
+        },
+        {
+          "Antwort": "(a + b)^2 = a^2 + 2ab + b^2",
+          "Richtig": false,
+          "Kommentar": "Das ist die richtige Darstellung der ersten binomischen Formel."
+        }
+      ]
+    },
+    {
+      "Frage": "Warum sind die binomischen Formeln nützlich?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Sie erleichtern die Multiplikation von Summen und Differenzen.",
+          "Richtig": true,
+          "Kommentar": "Durch die binomischen Formeln wird die Multiplikation vereinfacht."
+        },
+        {
+          "Antwort": "Sie helfen bei der Faktorisierung von Polynomgleichungen.",
+          "Richtig": true,
+          "Kommentar": "Binomische Formeln können genutzt werden, um Polynome zu faktorisieren."
+        },
+        {
+          "Antwort": "Sie ersetzen die Notwendigkeit, Algebra zu lernen.",
+          "Richtig": false,
+          "Kommentar": "Die binomischen Formeln sind Teil der Algebra, ersetzen sie aber nicht."
+        },
+        {
+          "Antwort": "Sie gelten nur für lineare Gleichungen.",
+          "Richtig": false,
+          "Kommentar": "Die binomischen Formeln gelten für quadratische Terme."
+        }
+      ]
+    }
+  ]
+}

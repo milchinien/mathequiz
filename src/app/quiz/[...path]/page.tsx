@@ -1,11 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
-import { Quiz, UserAnswer } from '@/types/quiz';
+import { Quiz, UserAnswer, Question } from '@/types/quiz';
 import QuizQuestion from '@/components/QuizQuestion';
 import QuizResults from '@/components/QuizResults';
 import Link from 'next/link';
+
+interface ShuffledQuestion extends Question {
+  originalIndex: number;
+}
 
 export default function QuizPage() {
   const params = useParams();
@@ -17,6 +21,25 @@ export default function QuizPage() {
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const mode = (searchParams.get('mode') as 'immediate' | 'summary') || 'immediate';
   const [showResults, setShowResults] = useState(false);
+
+  // Shuffle questions once when quiz is loaded
+  const shuffledQuestions = useMemo<ShuffledQuestion[]>(() => {
+    if (!quiz?.Fragen) return [];
+
+    const questionsWithIndex = quiz.Fragen.map((question, index) => ({
+      ...question,
+      originalIndex: index
+    }));
+
+    // Fisher-Yates shuffle algorithm
+    const shuffled = [...questionsWithIndex];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled;
+  }, [quiz]);
 
   useEffect(() => {
     if (params.path) {
@@ -43,8 +66,11 @@ export default function QuizPage() {
   };
 
   const handleAnswer = (selectedAnswers: number[], isCorrect: boolean, feedbackMessage?: string) => {
+    // Store the original question index for results tracking
+    const originalQuestionIndex = shuffledQuestions[currentQuestionIndex]?.originalIndex ?? currentQuestionIndex;
+
     const newAnswer: UserAnswer = {
-      questionIndex: currentQuestionIndex,
+      questionIndex: originalQuestionIndex, // Use original index for results consistency
       selectedAnswers,
       isCorrect
     };
@@ -64,9 +90,9 @@ export default function QuizPage() {
   };
 
   const handleNext = () => {
-    if (!quiz) return;
+    if (!shuffledQuestions.length) return;
 
-    if (currentQuestionIndex < quiz.Fragen.length - 1) {
+    if (currentQuestionIndex < shuffledQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       setShowResults(true);
@@ -105,7 +131,7 @@ export default function QuizPage() {
           quiz={quiz}
           userAnswers={userAnswers}
           correctCount={calculateCorrectCount()}
-          totalQuestions={quiz.Fragen.length}
+          totalQuestions={shuffledQuestions.length}
         />
       </div>
     );
@@ -128,13 +154,13 @@ export default function QuizPage() {
         </div>
 
         <QuizQuestion
-          question={quiz.Fragen[currentQuestionIndex]}
+          question={shuffledQuestions[currentQuestionIndex]}
           questionNumber={currentQuestionIndex + 1}
-          totalQuestions={quiz.Fragen.length}
+          totalQuestions={shuffledQuestions.length}
           mode={mode}
           onAnswer={handleAnswer}
           onNext={handleNext}
-          isLastQuestion={currentQuestionIndex === quiz.Fragen.length - 1}
+          isLastQuestion={currentQuestionIndex === shuffledQuestions.length - 1}
         />
       </div>
     </div>

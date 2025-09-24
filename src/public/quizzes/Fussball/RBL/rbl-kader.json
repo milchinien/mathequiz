@@ -1,0 +1,265 @@
+{
+  "Thema": "RBL Kader",
+  "Fragen": [
+    {
+      "Frage": "Welcher Spieler im RBL Kader hat die Rückennummer 36?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Timo Werner",
+          "Richtig": true,
+          "Kommentar": "Timo Werner trägt die Rückennummer 36."
+        },
+        {
+          "Antwort": "Lukas Klostermann",
+          "Richtig": false,
+          "Kommentar": "Lukas Klostermann trägt die Rückennummer 16."
+        },
+        {
+          "Antwort": "Péter Gulácsi",
+          "Richtig": false,
+          "Kommentar": "Péter Gulácsi trägt die Rückennummer 1."
+        },
+        {
+          "Antwort": "David Raum",
+          "Richtig": false,
+          "Kommentar": "David Raum trägt die Rückennummer 22."
+        }
+      ]
+    },
+    {
+      "Frage": "Aus welchem Land stammt der Spieler Ridle Baku?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Deutschland",
+          "Richtig": true,
+          "Kommentar": "Ridle Baku stammt aus Deutschland."
+        },
+        {
+          "Antwort": "Österreich",
+          "Richtig": false,
+          "Kommentar": "Ridle Baku stammt nicht aus Österreich, sondern aus Deutschland."
+        },
+        {
+          "Antwort": "Frankreich",
+          "Richtig": false,
+          "Kommentar": "Ridle Baku stammt nicht aus Frankreich, sondern aus Deutschland."
+        },
+        {
+          "Antwort": "Ungarn",
+          "Richtig": false,
+          "Kommentar": "Ridle Baku stammt nicht aus Ungarn, sondern aus Deutschland."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Spieler wurde am 03.11.1992 geboren?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Willi Orbán",
+          "Richtig": true,
+          "Kommentar": "Willi Orbán wurde am 03.11.1992 geboren."
+        },
+        {
+          "Antwort": "Péter Gulácsi",
+          "Richtig": false,
+          "Kommentar": "Péter Gulácsi wurde am 06.05.1990 geboren."
+        },
+        {
+          "Antwort": "Kevin Kampl",
+          "Richtig": false,
+          "Kommentar": "Kevin Kampl wurde am 09.10.1990 geboren."
+        },
+        {
+          "Antwort": "Lukas Klostermann",
+          "Richtig": false,
+          "Kommentar": "Lukas Klostermann wurde am 03.06.1996 geboren."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Spieler aus dem Mittelfeld trägt die Rückennummer 24?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Xaver Schlager",
+          "Richtig": true,
+          "Kommentar": "Xaver Schlager trägt die Rückennummer 24."
+        },
+        {
+          "Antwort": "Amadou Haïdara",
+          "Richtig": false,
+          "Kommentar": "Amadou Haïdara trägt die Rückennummer 8."
+        },
+        {
+          "Antwort": "Kevin Kampl",
+          "Richtig": false,
+          "Kommentar": "Kevin Kampl trägt die Rückennummer 44."
+        },
+        {
+          "Antwort": "Christoph Baumgartner",
+          "Richtig": false,
+          "Kommentar": "Christoph Baumgartner trägt die Rückennummer 14."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Spieler im Sturm ist aus Norwegen?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Antonio Nusa",
+          "Richtig": true,
+          "Kommentar": "Antonio Nusa stammt aus Norwegen."
+        },
+        {
+          "Antwort": "Johan Bakayoko",
+          "Richtig": false,
+          "Kommentar": "Johan Bakayoko stammt aus Belgien."
+        },
+        {
+          "Antwort": "Conrad Harder",
+          "Richtig": false,
+          "Kommentar": "Conrad Harder stammt aus Dänemark."
+        },
+        {
+          "Antwort": "Rômulo",
+          "Richtig": false,
+          "Kommentar": "Rômulo stammt aus Brasilien."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Torwart wurde am 26.02.2002 geboren?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Maarten Vandevoordt",
+          "Richtig": true,
+          "Kommentar": "Maarten Vandevoordt wurde am 26.02.2002 geboren."
+        },
+        {
+          "Antwort": "Péter Gulácsi",
+          "Richtig": false,
+          "Kommentar": "Péter Gulácsi wurde am 06.05.1990 geboren."
+        },
+        {
+          "Antwort": "Leopold Zingerle",
+          "Richtig": false,
+          "Kommentar": "Leopold Zingerle wurde am 10.04.1994 geboren."
+        },
+        {
+          "Antwort": "Frederik Gößling",
+          "Richtig": false,
+          "Kommentar": "Frederik Gößling ist der Torwart-Trainer und wurde am 22.09.1977 geboren."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Spieler in der Abwehr hat die Rückennummer 4?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Willi Orbán",
+          "Richtig": true,
+          "Kommentar": "Willi Orbán trägt die Rückennummer 4."
+        },
+        {
+          "Antwort": "Ridle Baku",
+          "Richtig": false,
+          "Kommentar": "Ridle Baku trägt die Rückennummer 17."
+        },
+        {
+          "Antwort": "David Raum",
+          "Richtig": false,
+          "Kommentar": "David Raum trägt die Rückennummer 22."
+        },
+        {
+          "Antwort": "Benjamin Henrichs",
+          "Richtig": false,
+          "Kommentar": "Benjamin Henrichs trägt die Rückennummer 39."
+        }
+      ]
+    },
+    {
+      "Frage": "An welchem Datum hat der Trainer Ole Werner Geburtstag?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "04.05.1988",
+          "Richtig": true,
+          "Kommentar": "Ole Werner wurde am 04.05.1988 geboren."
+        },
+        {
+          "Antwort": "12.05.1976",
+          "Richtig": false,
+          "Kommentar": "Dieses Datum gehört zu Tom Cichon, dem Co-Trainer."
+        },
+        {
+          "Antwort": "25.02.1983",
+          "Richtig": false,
+          "Kommentar": "Dieses Datum gehört zu Patrick Kohlmann, dem Co-Trainer."
+        },
+        {
+          "Antwort": "05.10.1979",
+          "Richtig": false,
+          "Kommentar": "Dieses Datum gehört zu Jan Zimmermann, dem Co-Trainer."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Mittelfeldspieler ist aus Mali?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Amadou Haïdara",
+          "Richtig": true,
+          "Kommentar": "Amadou Haïdara stammt aus Mali."
+        },
+        {
+          "Antwort": "Kevin Kampl",
+          "Richtig": false,
+          "Kommentar": "Kevin Kampl stammt aus Slowenien."
+        },
+        {
+          "Antwort": "Xaver Schlager",
+          "Richtig": false,
+          "Kommentar": "Xaver Schlager stammt aus Österreich."
+        },
+        {
+          "Antwort": "Nicolas Seiwald",
+          "Richtig": false,
+          "Kommentar": "Nicolas Seiwald stammt aus Österreich."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Spieler in der Abwehr hat die Rückennummer 22?",
+      "Typ": "SingleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "David Raum",
+          "Richtig": true,
+          "Kommentar": "David Raum trägt die Rückennummer 22."
+        },
+        {
+          "Antwort": "Lukas Klostermann",
+          "Richtig": false,
+          "Kommentar": "Lukas Klostermann trägt die Rückennummer 16."
+        },
+        {
+          "Antwort": "Castello Lukeba",
+          "Richtig": false,
+          "Kommentar": "Castello Lukeba trägt die Rückennummer 23."
+        },
+        {
+          "Antwort": "Willi Orbán",
+          "Richtig": false,
+          "Kommentar": "Willi Orbán trägt die Rückennummer 4."
+        }
+      ]
+    }
+  ]
+}
