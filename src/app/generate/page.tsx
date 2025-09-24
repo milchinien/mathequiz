@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import CreationTypeSelector, { CreationTypeSelection } from '@/components/CreationTypeSelector';
 import CategorySelector from '@/components/CategorySelector';
 import ContentInput from '@/components/ContentInput';
 import QuizConfig from '@/components/QuizConfig';
@@ -19,6 +20,7 @@ export interface QuizGenerationConfig {
 }
 
 export default function GeneratePage() {
+  const [creationType, setCreationType] = useState<CreationTypeSelection | null>(null);
   const [content, setContent] = useState<string>('');
   const [file, setFile] = useState<File | null>(null);
   const [config, setConfig] = useState<QuizGenerationConfig>({
@@ -36,6 +38,11 @@ export default function GeneratePage() {
   const [savedFileName, setSavedFileName] = useState<string | null>(null);
 
   const handleGenerate = async () => {
+    if (creationType?.type !== 'quiz') {
+      setError('Quiz-Generierung ist nur im "Quiz erstellen" Modus verfügbar');
+      return;
+    }
+
     if (!config.category || !config.subcategory) {
       setError('Bitte wählen Sie eine Kategorie und Unterkategorie aus');
       return;
@@ -119,8 +126,14 @@ export default function GeneratePage() {
     setSavedFileName(null);
     setContent('');
     setFile(null);
+    setCreationType(null);
     setConfig({
-      ...config,
+      category: '',
+      subcategory: '',
+      questionCount: 10,
+      answersPerQuestion: 4,
+      allowMultipleAnswers: false,
+      targetAudience: 'Schüler der 9. Klasse',
       quizTitle: ''
     });
   };
@@ -191,55 +204,138 @@ export default function GeneratePage() {
           </Link>
         </div>
 
-        <h1 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100">Neues Quiz generieren</h1>
+        <h1 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100">
+          {creationType === null ? 'Was möchten Sie erstellen?' :
+           creationType.type === 'category' ? 'Neue Kategorie erstellen' :
+           creationType.type === 'subcategory' ? 'Neue Unterkategorie erstellen' :
+           'Neues Quiz generieren'}
+        </h1>
 
         <div className="space-y-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">1. Kategorie auswählen</h2>
-            <CategorySelector
-              category={config.category}
-              subcategory={config.subcategory}
-              onCategoryChange={(cat) => setConfig({ ...config, category: cat })}
-              onSubcategoryChange={(subcat) => setConfig({ ...config, subcategory: subcat })}
-            />
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">2. Inhalt bereitstellen</h2>
-            <ContentInput
-              content={content}
-              onContentChange={setContent}
-              onFileChange={setFile}
-            />
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">3. Quiz konfigurieren</h2>
-            <QuizConfig
-              config={config}
-              onConfigChange={setConfig}
-            />
-          </div>
-
-          {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded">
-              {error}
+          {!creationType ? (
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-semibold mb-6 text-center text-gray-900 dark:text-gray-100">Wählen Sie den Erstellungstyp</h2>
+              <CreationTypeSelector onSelectionChange={setCreationType} />
             </div>
-          )}
+          ) : creationType.type === 'category' ? (
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Neue Kategorie erstellen</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Erstellen Sie eine neue Hauptkategorie für Ihre Quizze.
+              </p>
+              <div className="max-w-md">
+                <input
+                  type="text"
+                  placeholder="Name der neuen Kategorie..."
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                />
+                <div className="flex gap-3 mt-4">
+                  <button className="px-6 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition">
+                    Kategorie erstellen
+                  </button>
+                  <button
+                    onClick={() => setCreationType(null)}
+                    className="px-6 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500 transition"
+                  >
+                    Zurück
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : creationType.type === 'subcategory' ? (
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Neue Unterkategorie erstellen</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Wählen Sie erst eine Kategorie aus und erstellen Sie dann eine neue Unterkategorie.
+              </p>
+              <div className="space-y-4 max-w-md">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Kategorie auswählen
+                  </label>
+                  <select className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+                    <option value="">Kategorie wählen...</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Name der neuen Unterkategorie
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Name der neuen Unterkategorie..."
+                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <button className="px-6 py-2 bg-green-600 dark:bg-green-700 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition">
+                    Unterkategorie erstellen
+                  </button>
+                  <button
+                    onClick={() => setCreationType(null)}
+                    className="px-6 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500 transition"
+                  >
+                    Zurück
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">1. Kategorie auswählen</h2>
+                <CategorySelector
+                  category={config.category}
+                  subcategory={config.subcategory}
+                  onCategoryChange={(cat) => setConfig({ ...config, category: cat })}
+                  onSubcategoryChange={(subcat) => setConfig({ ...config, subcategory: subcat })}
+                />
+              </div>
 
-          <div className="flex justify-center">
-            <button
-              onClick={handleGenerate}
-              disabled={isGenerating}
-              className={`px-8 py-4 text-lg font-semibold rounded-lg transition ${
-                isGenerating
-                  ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  : 'bg-green-600 dark:bg-green-700 text-white hover:bg-green-700 dark:hover:bg-green-600'
-              }`}
-            >
-              {isGenerating ? 'Quiz wird generiert...' : 'Quiz generieren'}
-            </button>
-          </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">2. Inhalt bereitstellen</h2>
+                <ContentInput
+                  content={content}
+                  onContentChange={setContent}
+                  onFileChange={setFile}
+                />
+              </div>
+
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">3. Quiz konfigurieren</h2>
+                <QuizConfig
+                  config={config}
+                  onConfigChange={setConfig}
+                />
+              </div>
+
+              {error && (
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded">
+                  {error}
+                </div>
+              )}
+
+              <div className="flex justify-center gap-4">
+                <button
+                  onClick={handleGenerate}
+                  disabled={isGenerating}
+                  className={`px-8 py-4 text-lg font-semibold rounded-lg transition ${
+                    isGenerating
+                      ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                      : 'bg-green-600 dark:bg-green-700 text-white hover:bg-green-700 dark:hover:bg-green-600'
+                  }`}
+                >
+                  {isGenerating ? 'Quiz wird generiert...' : 'Quiz generieren'}
+                </button>
+                <button
+                  onClick={() => setCreationType(null)}
+                  className="px-6 py-4 text-lg font-semibold bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500 transition"
+                >
+                  Zurück zur Auswahl
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { DarkModeProvider } from "@/contexts/DarkModeContext";
-import DarkModeToggle from "@/components/DarkModeToggle";
+import TaskBar from "@/components/TaskBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,9 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors`}
       >
         <DarkModeProvider>
-          <div className="fixed top-4 right-4 z-50">
-            <DarkModeToggle />
-          </div>
+          <TaskBar />
           {children}
         </DarkModeProvider>
       </body>
