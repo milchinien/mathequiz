@@ -127,29 +127,29 @@ export default function GeneratePage() {
 
   if (savedFileName) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-8">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
-            <h2 className="text-2xl font-bold text-green-600 mb-4">Quiz erfolgreich gespeichert!</h2>
-            <p className="text-gray-700 mb-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
+            <h2 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-4">Quiz erfolgreich gespeichert!</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               Das Quiz "{config.quizTitle}" wurde in der Kategorie {config.category}/{config.subcategory} gespeichert.
             </p>
             <div className="flex gap-4 justify-center">
               <Link
                 href={`/quiz/${config.category}/${config.subcategory}/${savedFileName}?mode=immediate`}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                className="px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition"
               >
                 Quiz spielen
               </Link>
               <button
                 onClick={handleReset}
-                className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+                className="px-6 py-3 bg-gray-600 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition"
               >
                 Neues Quiz erstellen
               </button>
               <Link
                 href="/"
-                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+                className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition"
               >
                 Zur Übersicht
               </Link>
@@ -162,12 +162,12 @@ export default function GeneratePage() {
 
   if (generatedQuiz) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-8">
         <div className="max-w-4xl mx-auto px-4">
           <div className="mb-6">
             <button
               onClick={handleReset}
-              className="text-blue-600 hover:underline flex items-center gap-2"
+              className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-2"
             >
               ← Zurück zur Generierung
             </button>
@@ -183,19 +183,19 @@ export default function GeneratePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-6">
-          <Link href="/" className="text-blue-600 hover:underline">
+          <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline">
             ← Zurück zur Übersicht
           </Link>
         </div>
 
-        <h1 className="text-3xl font-bold mb-8 text-center">Neues Quiz generieren</h1>
+        <h1 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100">Neues Quiz generieren</h1>
 
         <div className="space-y-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">1. Kategorie auswählen</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">1. Kategorie auswählen</h2>
             <CategorySelector
               category={config.category}
               subcategory={config.subcategory}
@@ -204,8 +204,8 @@ export default function GeneratePage() {
             />
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">2. Inhalt bereitstellen</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">2. Inhalt bereitstellen</h2>
             <ContentInput
               content={content}
               onContentChange={setContent}
@@ -213,8 +213,8 @@ export default function GeneratePage() {
             />
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">3. Quiz konfigurieren</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">3. Quiz konfigurieren</h2>
             <QuizConfig
               config={config}
               onConfigChange={setConfig}
@@ -222,7 +222,7 @@ export default function GeneratePage() {
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded">
               {error}
             </div>
           )}
@@ -234,7 +234,7 @@ export default function GeneratePage() {
               className={`px-8 py-4 text-lg font-semibold rounded-lg transition ${
                 isGenerating
                   ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  : 'bg-green-600 text-white hover:bg-green-700'
+                  : 'bg-green-600 dark:bg-green-700 text-white hover:bg-green-700 dark:hover:bg-green-600'
               }`}
             >
               {isGenerating ? 'Quiz wird generiert...' : 'Quiz generieren'}

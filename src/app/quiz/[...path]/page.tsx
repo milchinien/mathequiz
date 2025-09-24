@@ -105,18 +105,18 @@ export default function QuizPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
-        <div className="text-xl">Lade Quiz...</div>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+        <div className="text-xl text-gray-900 dark:text-gray-100">Lade Quiz...</div>
       </div>
     );
   }
 
   if (error || !quiz) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-xl text-red-600 mb-4">{error || 'Quiz nicht gefunden'}</div>
-          <Link href="/" className="text-blue-600 hover:underline">
+          <div className="text-xl text-red-600 dark:text-red-400 mb-4">{error || 'Quiz nicht gefunden'}</div>
+          <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline">
             Zurück zur Übersicht
           </Link>
         </div>
@@ -126,7 +126,7 @@ export default function QuizPage() {
 
   if (showResults) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-8">
         <QuizResults
           quiz={quiz}
           userAnswers={userAnswers}
@@ -138,17 +138,17 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-6">
-          <Link href="/" className="text-blue-600 hover:underline">
+          <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline">
             ← Zurück zur Übersicht
           </Link>
         </div>
 
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold">{quiz.Thema}</h1>
-          <p className="text-sm text-gray-600 mt-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">{quiz.Thema}</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
             Modus: {mode === 'immediate' ? 'Sofort-Feedback' : 'Zusammenfassung am Ende'}
           </p>
         </div>

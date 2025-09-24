@@ -83,22 +83,22 @@ export default function QuizPreview({ quiz, onSave, onEdit }: QuizPreviewProps) 
         ))}
       </div>
 
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h4 className="font-semibold mb-4">Quiz bereit zum Speichern</h4>
-        <p className="text-gray-600 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h4 className="font-semibold mb-4 text-gray-900 dark:text-gray-100">Quiz bereit zum Speichern</h4>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">
           Überprüfen Sie das Quiz sorgfältig. Nach dem Speichern ist es sofort für alle Nutzer verfügbar.
         </p>
 
         <div className="flex gap-4 justify-center">
           <button
             onClick={onEdit}
-            className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+            className="px-6 py-3 bg-gray-600 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition"
           >
             Bearbeiten
           </button>
           <button
             onClick={onSave}
-            className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+            className="px-6 py-3 bg-green-600 dark:bg-green-700 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition"
           >
             Quiz speichern
           </button>

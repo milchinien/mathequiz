@@ -6,14 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 From the `src/` directory:
 
-- **Development**: `npm run dev` - Starts Next.js development server with Turbopack at http://localhost:3000
-- **Build**: `npm run build` - Creates production build with Turbopack
+- **Development**: `npm run dev` - Starts Next.js development server at http://localhost:3000
+- **Build**: `npm run build` - Creates production build
 - **Production**: `npm run start` - Starts production server
 - **Linting**: `npm run lint` - Runs ESLint
 
 ## Architecture
 
-This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v4. The application serves math quizzes from JSON files with two feedback modes: immediate and summary. Features **AI-powered quiz generation** using OpenAI and dynamic content shuffling.
+This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v3. The application serves math quizzes from JSON files with two feedback modes: immediate and summary. Features **AI-powered quiz generation** using OpenAI, dynamic content shuffling, and **comprehensive dark mode support**.
 
 ### Key Components
 
@@ -46,6 +46,13 @@ This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v4. T
 6. **Type System**: Central TypeScript definitions in `src/types/quiz.ts` defining Quiz, Question, Answer, and UserAnswer structures.
 
 7. **Component Architecture**: React components in `src/components/` handle quiz display, generation UI, questions, results, and feedback toasts.
+
+8. **Dark Mode System**:
+   - **Context-Based**: React Context (`DarkModeContext`) with localStorage persistence
+   - **System Detection**: Automatic detection of user's system color scheme preference
+   - **Toggle Component**: Fixed-position dark mode toggle with sun/moon icons
+   - **Comprehensive Styling**: All components support light/dark themes using Tailwind CSS class-based dark mode
+   - **Smooth Transitions**: CSS transitions for seamless theme switching
 
 ## Project Structure
 

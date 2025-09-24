@@ -127,25 +127,25 @@ export default function QuizQuestion({
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-3xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
       <div className="mb-6">
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-gray-600 dark:text-gray-400">
             Frage {questionNumber} von {totalQuestions}
           </span>
-          <span className="text-sm font-medium text-blue-600">
+          <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
             {question.Typ === 'SingleAnswer' ? 'Eine Antwort' : 'Mehrere Antworten möglich'}
           </span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
           <div
-            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+            className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all duration-300"
             style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
           />
         </div>
       </div>
 
-      <h2 className="text-xl font-semibold mb-6">{question.Frage}</h2>
+      <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">{question.Frage}</h2>
 
       <div className="space-y-3 mb-6">
         {shuffledAnswers.map((answer, index) => (
@@ -154,15 +154,15 @@ export default function QuizQuestion({
             onClick={() => handleAnswerSelect(index)}
             className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
               selectedAnswers.includes(index)
-                ? 'bg-blue-50 border-blue-500'
-                : 'bg-gray-50 border-gray-300 hover:bg-gray-100'
+                ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-500'
+                : 'bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600'
             } ${submitted ? 'cursor-not-allowed' : ''}`}
           >
             <div className="flex items-center">
               <div className={`mr-3 ${question.Typ === 'SingleAnswer' ? 'rounded-full' : 'rounded'} w-5 h-5 border-2 ${
                 selectedAnswers.includes(index)
                   ? 'bg-blue-500 border-blue-500'
-                  : 'border-gray-400'
+                  : 'border-gray-400 dark:border-gray-500'
               }`}>
                 {selectedAnswers.includes(index) && (
                   <svg className="w-full h-full text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -170,7 +170,7 @@ export default function QuizQuestion({
                   </svg>
                 )}
               </div>
-              <span className="flex-1">{answer.Antwort}</span>
+              <span className="flex-1 text-gray-900 dark:text-gray-100">{answer.Antwort}</span>
             </div>
           </div>
         ))}
@@ -181,7 +181,7 @@ export default function QuizQuestion({
           <button
             onClick={handleSubmit}
             disabled={selectedAnswers.length === 0}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            className="px-6 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
           >
             Antwort überprüfen
           </button>
