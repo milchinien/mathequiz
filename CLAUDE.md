@@ -135,3 +135,9 @@ The codebase is organized within the `src/` directory as the main Next.js applic
 - **Mobile Responsive**: Fully responsive design that works on all screen sizes
 - **Visual Feedback**: Hover effects, transitions, and clear visual states for all interactive elements
 - **Loading States**: Proper loading indicators during authentication and page transitions
+
+## Hints
+
+- You should have playwright MCP available to test the user interface.
+- Use this always if you need to verify if a feature is really working.
+- Log in with the name "Claude"
