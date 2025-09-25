@@ -24,16 +24,19 @@ This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v3. T
    - `/api/quiz/[...path]` - Fetches specific quiz JSON files
    - `/api/generate-quiz` - AI-powered quiz generation using OpenAI
    - `/api/save-quiz` - Saves generated quizzes to file system
-   - `/api/categories` - Creates new quiz categories and subcategories
+   - `/api/categories` - Full CRUD operations for categories and subcategories (POST, PUT, DELETE)
+   - `/api/quiz-management` - CRUD operations for quiz files (PUT, DELETE)
    - `/api/scrape` - Extracts text content from URLs for quiz generation
 
 3. **Core Pages**:
-   - Home page (`/`) - Quiz selector interface with link to quiz generation
+   - Home page (`/`) - Quiz selector interface with adaptive column sizing and edit/delete buttons for all items
    - Quiz page (`/quiz/[...path]`) - Dynamic quiz player with shuffled questions/answers and immediate or summary feedback modes
-   - Generate page (`/generate`) - AI-powered quiz creation interface
+   - Generate page (`/generate`) - Restructured AI-powered creation interface with type selection (Category/Subcategory/Quiz)
+   - Edit page (`/edit`) - Dedicated page for quiz editing and management (placeholder tab added)
 
 4. **Quiz Generation System**:
-   - **Content Input**: Text, file upload (TXT/MD), or URL scraping
+   - **Creation Type Selection**: Choose between creating categories, subcategories, or quizzes
+   - **Content Input**: Text, file upload (TXT/MD), or URL scraping with dark mode support
    - **AI Integration**: OpenAI GPT-4o with structured prompts in `src/prompts/quiz-generation.txt`
    - **Category Management**: Dynamic creation of categories and subcategories
    - **Quiz Preview**: Review generated quiz before saving
@@ -45,14 +48,28 @@ This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v3. T
 
 6. **Type System**: Central TypeScript definitions in `src/types/quiz.ts` defining Quiz, Question, Answer, and UserAnswer structures.
 
-7. **Component Architecture**: React components in `src/components/` handle quiz display, generation UI, questions, results, and feedback toasts.
+7. **Component Architecture**: React components in `src/components/` handle quiz display, generation UI, questions, results, feedback toasts, and CRUD operations.
 
 8. **Dark Mode System**:
    - **Context-Based**: React Context (`DarkModeContext`) with localStorage persistence
    - **System Detection**: Automatic detection of user's system color scheme preference
-   - **Toggle Component**: Fixed-position dark mode toggle with sun/moon icons
+   - **Navigation Toggle**: Dark mode toggle integrated into TaskBar options dropdown
    - **Comprehensive Styling**: All components support light/dark themes using Tailwind CSS class-based dark mode
+   - **Form Compatibility**: All input fields, text areas, and form elements properly styled for dark mode
    - **Smooth Transitions**: CSS transitions for seamless theme switching
+
+9. **Navigation System**:
+   - **TaskBar**: Main navigation with "Lernen", "Quiz erstellen", and "Quiz bearbeiten" tabs
+   - **Options Dropdown**: Three-dots menu positioned at screen edge with settings and dark mode toggle
+   - **Adaptive Layout**: Responsive design with mobile-friendly navigation
+   - **Active States**: Visual indicators for current page/section
+
+10. **CRUD Operations**:
+    - **Edit/Delete Buttons**: All quiz selector items have inline edit and delete actions
+    - **Category Management**: Full CRUD operations for categories and subcategories
+    - **Quiz Management**: Edit and delete individual quiz files
+    - **Confirmation Dialogs**: Safe deletion with user confirmation (TODO: implement modals)
+    - **Inline Editing**: Edit category/subcategory names directly in the interface (TODO: implement)
 
 ## Project Structure
 
@@ -65,9 +82,19 @@ The codebase is organized within the `src/` directory as the main Next.js applic
 
 ## Quiz Generation Features
 
+- **Creation Type Selection**: Users choose between creating categories, subcategories, or quizzes
 - **AI-Powered**: Uses OpenAI GPT-4o to generate quiz questions from any text content
-- **Multiple Input Methods**: Direct text input, file upload (TXT/MD), or URL scraping
+- **Multiple Input Methods**: Direct text input, file upload (TXT/MD), or URL scraping with full dark mode support
 - **Flexible Configuration**: Customizable question count, answer options, single/multiple choice, target audience
 - **Dynamic Categories**: Create new quiz categories and subcategories on-the-fly
 - **Preview System**: Review and edit generated quizzes before saving
 - **Automatic Shuffling**: Both questions and answers are randomized for unpredictable quiz experiences
+
+## UI/UX Features
+
+- **Adaptive Quiz Selector**: Dynamic column sizing that expands the active selection step
+- **Edit/Delete Actions**: Inline buttons for managing all categories, subcategories, and quizzes
+- **Comprehensive Dark Mode**: Full dark mode support across all components and form elements
+- **Enhanced Navigation**: TaskBar with three main sections and integrated options menu
+- **Mobile Responsive**: Fully responsive design that works on all screen sizes
+- **Visual Feedback**: Hover effects, transitions, and clear visual states for all interactive elements
