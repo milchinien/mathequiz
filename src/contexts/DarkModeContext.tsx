@@ -10,30 +10,42 @@ interface DarkModeContextType {
 const DarkModeContext = createContext<DarkModeContextType | undefined>(undefined);
 
 export function DarkModeProvider({ children }: { children: React.ReactNode }) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // Mark that we're on the client side
+    setIsClient(true);
+
     // Check localStorage for saved preference
     const saved = localStorage.getItem('darkMode');
     if (saved !== null) {
-      const darkMode = JSON.parse(saved);
-      setIsDarkMode(darkMode);
+      try {
+        const darkMode = JSON.parse(saved);
+        setIsDarkMode(darkMode);
+      } catch (error) {
+        console.error('Error parsing darkMode from localStorage:', error);
+        setIsDarkMode(true);
+        localStorage.setItem('darkMode', JSON.stringify(true));
+      }
     } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(prefersDark);
+      // Default to dark mode
+      setIsDarkMode(true);
+      localStorage.setItem('darkMode', JSON.stringify(true));
     }
   }, []);
 
   useEffect(() => {
-    // Update document class and localStorage when dark mode changes
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    // Only update DOM on client side after initial hydration
+    if (isClient) {
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
     }
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
+  }, [isDarkMode, isClient]);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);

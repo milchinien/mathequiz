@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     let finalContent = content || '';
 
     // If file is provided, we'll handle it for OpenAI
-    let messages: OpenAI.Chat.ChatCompletionMessageParam[] = [];
+    const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [];
 
     if (file) {
       // Convert file to base64 for OpenAI

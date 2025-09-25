@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useProtectedRoute } from '@/hooks/useProtectedRoute';
 import CreationTypeSelector, { CreationTypeSelection } from '@/components/CreationTypeSelector';
 import CategorySelector from '@/components/CategorySelector';
 import ContentInput from '@/components/ContentInput';
@@ -20,6 +21,7 @@ export interface QuizGenerationConfig {
 }
 
 export default function GeneratePage() {
+  const { isAuthenticated, isLoading } = useProtectedRoute();
   const [creationType, setCreationType] = useState<CreationTypeSelection | null>(null);
   const [content, setContent] = useState<string>('');
   const [file, setFile] = useState<File | null>(null);
@@ -36,6 +38,18 @@ export default function GeneratePage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [savedFileName, setSavedFileName] = useState<string | null>(null);
+
+  // Show loading while checking authentication
+  if (isLoading || !isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400">Weiterleitung zur Anmeldung...</p>
+        </div>
+      </div>
+    );
+  }
 
   const handleGenerate = async () => {
     if (creationType?.type !== 'quiz') {
@@ -145,7 +159,7 @@ export default function GeneratePage() {
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
             <h2 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-4">Quiz erfolgreich gespeichert!</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              Das Quiz "{config.quizTitle}" wurde in der Kategorie {config.category}/{config.subcategory} gespeichert.
+              Das Quiz &quot;{config.quizTitle}&quot; wurde in der Kategorie {config.category}/{config.subcategory} gespeichert.
             </p>
             <div className="flex gap-4 justify-center">
               <Link
@@ -287,8 +301,12 @@ export default function GeneratePage() {
                 <CategorySelector
                   category={config.category}
                   subcategory={config.subcategory}
-                  onCategoryChange={(cat) => setConfig({ ...config, category: cat })}
-                  onSubcategoryChange={(subcat) => setConfig({ ...config, subcategory: subcat })}
+                  onCategoryChange={(cat) => {
+                    setConfig(prevConfig => ({ ...prevConfig, category: cat }));
+                  }}
+                  onSubcategoryChange={(subcat) => {
+                    setConfig(prevConfig => ({ ...prevConfig, subcategory: subcat }));
+                  }}
                 />
               </div>
 
