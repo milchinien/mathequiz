@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mathequiz:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # Mount the quizzes directory as an external volume
+      - quiz-data:/app/public/quizzes
+
+volumes:
+  quiz-data:
+    driver: local
