@@ -384,7 +384,7 @@ export default function QuizSelector() {
                confirmDelete.type === 'subcategory' ? 'Unterkategorie' : 'Quiz'} löschen
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Sind Sie sicher, dass Sie "{confirmDelete.name}" löschen möchten?
+              Sind Sie sicher, dass Sie &quot;{confirmDelete.name}&quot; löschen möchten?
               {confirmDelete.type !== 'quiz' && ' Alle enthaltenen Inhalte werden ebenfalls gelöscht.'}
               <br />
               <strong>Diese Aktion kann nicht rückgängig gemacht werden.</strong>

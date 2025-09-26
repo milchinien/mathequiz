@@ -10,18 +10,6 @@ export default function ProfilePage() {
   const { sessions, clearHistory } = useHistory();
   const [showDebug, setShowDebug] = useState(false);
 
-  // Show loading while checking authentication
-  if (isLoading || !isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">Weiterleitung zur Anmeldung...</p>
-        </div>
-      </div>
-    );
-  }
-
   // Calculate statistics - Simple system: 1 point per completed quiz
   const userSessions = sessions.filter(session => session.user === currentUser);
   const completedQuizzes = userSessions.length; // Each session = 1 completed quiz = 1 point
@@ -38,6 +26,18 @@ export default function ProfilePage() {
       });
     }
   }, [currentUser, sessions.length, userSessions.length, completedQuizzes]);
+
+  // Show loading while checking authentication
+  if (isLoading || !isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400">Weiterleitung zur Anmeldung...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-8">

@@ -29,7 +29,7 @@ export default function Home() {
               </h1>
               <div className="flex items-center mt-2">
                 <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-semibold mr-2">
-                  {currentUser.charAt(0).toUpperCase()}
+                  {currentUser?.charAt(0).toUpperCase()}
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
                   Angemeldet als <span className="font-medium text-gray-900 dark:text-gray-100">{currentUser}</span>

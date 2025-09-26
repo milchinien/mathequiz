@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import { Quiz, UserAnswer, Question } from '@/types/quiz';
 import { QuizSession, SessionQuestion } from '@/types/user';
@@ -14,7 +14,7 @@ interface ShuffledQuestion extends Question {
   originalIndex: number;
 }
 
-export default function QuizPage() {
+function QuizContent() {
   const { isAuthenticated, currentUser, isLoading } = useProtectedRoute();
   const params = useParams();
   const searchParams = useSearchParams();
@@ -56,7 +56,9 @@ export default function QuizPage() {
 
   const fetchQuiz = async () => {
     try {
-      const pathArray = Array.isArray(params.path) ? params.path : [params.path];
+      const pathArray: string[] = Array.isArray(params.path) 
+      ? params.path.filter((p): p is string => Boolean(p))
+      : params.path ? [params.path] : [];
       const response = await fetch(`/api/quiz/${pathArray.join('/')}`);
 
       if (!response.ok) {
@@ -115,7 +117,9 @@ export default function QuizPage() {
       // Create session with current userAnswers state
       const sessionEndTime = new Date();
       const duration = Math.round((sessionEndTime.getTime() - sessionStartTime.getTime()) / 1000);
-      const pathArray = Array.isArray(params.path) ? params.path : [params.path];
+      const pathArray: string[] = Array.isArray(params.path) 
+      ? params.path.filter((p): p is string => Boolean(p))
+      : params.path ? [params.path] : [];
 
       if (!currentUser || !quiz) return;
 
@@ -245,5 +249,20 @@ export default function QuizPage() {
         />
       </div>
     </div>
+  );
+}
+
+export default function QuizPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400">Quiz wird geladen...</p>
+        </div>
+      </div>
+    }>
+      <QuizContent />
+    </Suspense>
   );
 }

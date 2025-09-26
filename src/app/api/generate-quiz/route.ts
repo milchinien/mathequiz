@@ -5,11 +5,18 @@ import fs from 'fs/promises';
 import path from 'path';
 import { Quiz } from '@/types/quiz';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export async function POST(request: NextRequest) {
+  // Initialize OpenAI client only when needed
+  if (!process.env.OPENAI_API_KEY) {
+    return NextResponse.json(
+      { error: 'OpenAI API key is not configured' },
+      { status: 500 }
+    );
+  }
+
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
