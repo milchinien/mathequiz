@@ -1,18 +1,17 @@
 version: '3.8'
 
 services:
-  mathequiz:
-    build:
-      context: .
-      dockerfile: Dockerfile
+
+  mathequizpublic:
+    image: tobiaswaggoner/mathequiz:1.0
     ports:
-      - "3000:3000"
+      - "3009:3000"
     environment:
       - NODE_ENV=production
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
     volumes:
       # Mount the quizzes directory as an external volume
       - quiz-data:/app/public/quizzes
-
 volumes:
   quiz-data:
     driver: local
