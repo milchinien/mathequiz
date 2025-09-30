@@ -104,82 +104,82 @@ export default function EditPage() {
 
   const updateQuizTitle = (title: string) => {
     if (currentQuiz) {
-      setCurrentQuiz({ ...currentQuiz, title });
+      setCurrentQuiz({ ...currentQuiz, Thema: title });
     }
   };
 
-  const updateQuestion = (questionIndex: number, field: 'question' | 'explanation', value: string) => {
+  const updateQuestion = (questionIndex: number, field: 'Frage' | 'explanation', value: string) => {
     if (currentQuiz) {
-      const updatedQuestions = [...currentQuiz.questions];
+      const updatedQuestions = [...currentQuiz.Fragen];
       updatedQuestions[questionIndex] = {
         ...updatedQuestions[questionIndex],
         [field]: value
       };
-      setCurrentQuiz({ ...currentQuiz, questions: updatedQuestions });
+      setCurrentQuiz({ ...currentQuiz, Fragen: updatedQuestions });
     }
   };
 
-  const updateAnswer = (questionIndex: number, answerIndex: number, field: 'text' | 'isCorrect', value: string | boolean) => {
+  const updateAnswer = (questionIndex: number, answerIndex: number, field: 'Antwort' | 'Richtig', value: string | boolean) => {
     if (currentQuiz) {
-      const updatedQuestions = [...currentQuiz.questions];
-      const updatedAnswers = [...updatedQuestions[questionIndex].answers];
+      const updatedQuestions = [...currentQuiz.Fragen];
+      const updatedAnswers = [...updatedQuestions[questionIndex].Antworten];
       updatedAnswers[answerIndex] = {
         ...updatedAnswers[answerIndex],
         [field]: value
       };
       updatedQuestions[questionIndex] = {
         ...updatedQuestions[questionIndex],
-        answers: updatedAnswers
+        Antworten: updatedAnswers
       };
-      setCurrentQuiz({ ...currentQuiz, questions: updatedQuestions });
+      setCurrentQuiz({ ...currentQuiz, Fragen: updatedQuestions });
     }
   };
 
   const addQuestion = () => {
     if (currentQuiz) {
       const newQuestion = {
-        id: Date.now(),
-        question: 'Neue Frage',
-        answers: [
-          { text: 'Antwort 1', isCorrect: true },
-          { text: 'Antwort 2', isCorrect: false },
-          { text: 'Antwort 3', isCorrect: false },
-          { text: 'Antwort 4', isCorrect: false }
-        ],
-        explanation: 'Erklärung für diese Frage'
+        Frage: 'Neue Frage',
+        Typ: 'MultipleAnswer' as const,
+        Antworten: [
+          { Antwort: 'Antwort 1', Richtig: true, Kommentar: '' },
+          { Antwort: 'Antwort 2', Richtig: false, Kommentar: '' },
+          { Antwort: 'Antwort 3', Richtig: false, Kommentar: '' },
+          { Antwort: 'Antwort 4', Richtig: false, Kommentar: '' }
+        ]
       };
       setCurrentQuiz({
         ...currentQuiz,
-        questions: [...currentQuiz.questions, newQuestion]
+        Fragen: [...currentQuiz.Fragen, newQuestion]
       });
     }
   };
 
   const removeQuestion = (questionIndex: number) => {
-    if (currentQuiz && currentQuiz.questions.length > 1) {
-      const updatedQuestions = currentQuiz.questions.filter((_, index) => index !== questionIndex);
-      setCurrentQuiz({ ...currentQuiz, questions: updatedQuestions });
+    if (currentQuiz && currentQuiz.Fragen.length > 1) {
+      const updatedQuestions = currentQuiz.Fragen.filter((_, index) => index !== questionIndex);
+      setCurrentQuiz({ ...currentQuiz, Fragen: updatedQuestions });
     }
   };
 
   const addAnswer = (questionIndex: number) => {
     if (currentQuiz) {
-      const updatedQuestions = [...currentQuiz.questions];
-      updatedQuestions[questionIndex].answers.push({
-        text: 'Neue Antwort',
-        isCorrect: false
+      const updatedQuestions = [...currentQuiz.Fragen];
+      updatedQuestions[questionIndex].Antworten.push({
+        Antwort: 'Neue Antwort',
+        Richtig: false,
+        Kommentar: ''
       });
-      setCurrentQuiz({ ...currentQuiz, questions: updatedQuestions });
+      setCurrentQuiz({ ...currentQuiz, Fragen: updatedQuestions });
     }
   };
 
   const removeAnswer = (questionIndex: number, answerIndex: number) => {
     if (currentQuiz) {
-      const question = currentQuiz.questions[questionIndex];
-      if (question.answers.length > 2) {
-        const updatedQuestions = [...currentQuiz.questions];
-        updatedQuestions[questionIndex].answers = question.answers.filter((_, index) => index !== answerIndex);
-        setCurrentQuiz({ ...currentQuiz, questions: updatedQuestions });
+      const question = currentQuiz.Fragen[questionIndex];
+      if (question.Antworten.length > 2) {
+        const updatedQuestions = [...currentQuiz.Fragen];
+        updatedQuestions[questionIndex].Antworten = question.Antworten.filter((_, index) => index !== answerIndex);
+        setCurrentQuiz({ ...currentQuiz, Fragen: updatedQuestions });
       }
     }
   };
@@ -286,7 +286,7 @@ export default function EditPage() {
               <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Quiz-Titel</h2>
               <input
                 type="text"
-                value={currentQuiz.title}
+                value={currentQuiz.Thema}
                 onChange={(e) => updateQuizTitle(e.target.value)}
                 className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -294,13 +294,13 @@ export default function EditPage() {
 
             {/* Questions */}
             <div className="space-y-6">
-              {currentQuiz.questions.map((question, questionIndex) => (
-                <div key={question.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+              {currentQuiz.Fragen.map((question, questionIndex) => (
+                <div key={questionIndex} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                       Frage {questionIndex + 1}
                     </h3>
-                    {currentQuiz.questions.length > 1 && (
+                    {currentQuiz.Fragen.length > 1 && (
                       <button
                         onClick={() => removeQuestion(questionIndex)}
                         className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-sm"
@@ -317,8 +317,8 @@ export default function EditPage() {
                         Fragetext
                       </label>
                       <textarea
-                        value={question.question}
-                        onChange={(e) => updateQuestion(questionIndex, 'question', e.target.value)}
+                        value={question.Frage}
+                        onChange={(e) => updateQuestion(questionIndex, 'Frage', e.target.value)}
                         className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 resize-none"
                         rows={2}
                       />
@@ -338,21 +338,21 @@ export default function EditPage() {
                         </button>
                       </div>
                       <div className="space-y-2">
-                        {question.answers.map((answer, answerIndex) => (
+                        {question.Antworten.map((answer, answerIndex) => (
                           <div key={answerIndex} className="flex items-center gap-3">
                             <input
                               type="checkbox"
-                              checked={answer.isCorrect}
-                              onChange={(e) => updateAnswer(questionIndex, answerIndex, 'isCorrect', e.target.checked)}
+                              checked={answer.Richtig}
+                              onChange={(e) => updateAnswer(questionIndex, answerIndex, 'Richtig', e.target.checked)}
                               className="w-5 h-5 text-green-600 rounded"
                             />
                             <input
                               type="text"
-                              value={answer.text}
-                              onChange={(e) => updateAnswer(questionIndex, answerIndex, 'text', e.target.value)}
+                              value={answer.Antwort}
+                              onChange={(e) => updateAnswer(questionIndex, answerIndex, 'Antwort', e.target.value)}
                               className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                             />
-                            {question.answers.length > 2 && (
+                            {question.Antworten.length > 2 && (
                               <button
                                 onClick={() => removeAnswer(questionIndex, answerIndex)}
                                 className="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-sm"
@@ -363,19 +363,6 @@ export default function EditPage() {
                           </div>
                         ))}
                       </div>
-                    </div>
-
-                    {/* Explanation */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Erklärung
-                      </label>
-                      <textarea
-                        value={question.explanation}
-                        onChange={(e) => updateQuestion(questionIndex, 'explanation', e.target.value)}
-                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 resize-none"
-                        rows={2}
-                      />
                     </div>
                   </div>
                 </div>

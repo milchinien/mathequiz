@@ -5,10 +5,10 @@ import { Quiz } from '@/types/quiz';
 
 export async function GET(
   request: Request,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
   try {
-    const pathParts = params.path;
+    const { path: pathParts } = await params;
     if (pathParts.length !== 3) {
       return NextResponse.json(
         { error: 'Invalid path format' },

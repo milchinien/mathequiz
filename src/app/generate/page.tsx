@@ -18,6 +18,7 @@ export interface QuizGenerationConfig {
   allowMultipleAnswers: boolean;
   targetAudience: string;
   quizTitle: string;
+  poolSize: number; // Total questions to generate for pool (0 = no pool, use questionCount)
 }
 
 export default function GeneratePage() {
@@ -32,7 +33,8 @@ export default function GeneratePage() {
     answersPerQuestion: 4,
     allowMultipleAnswers: false,
     targetAudience: 'Schüler der 9. Klasse',
-    quizTitle: ''
+    quizTitle: '',
+    poolSize: 0
   });
   const [generatedQuiz, setGeneratedQuiz] = useState<Quiz | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -148,7 +150,8 @@ export default function GeneratePage() {
       answersPerQuestion: 4,
       allowMultipleAnswers: false,
       targetAudience: 'Schüler der 9. Klasse',
-      quizTitle: ''
+      quizTitle: '',
+      poolSize: 0
     });
   };
 

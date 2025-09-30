@@ -13,6 +13,10 @@ export interface Question {
 export interface Quiz {
   Thema: string;
   Fragen: Question[];
+  PoolConfig?: {
+    poolSize: number;          // Total questions in pool
+    questionsPerGame: number;  // Questions to select per game
+  };
 }
 
 export interface QuizStructure {

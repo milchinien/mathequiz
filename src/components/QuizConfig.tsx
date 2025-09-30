@@ -30,7 +30,7 @@ export default function QuizConfig({ config, onConfigChange }: QuizConfigProps) 
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="question-count" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Anzahl der Fragen
+            Fragen pro Quiz-Durchlauf
           </label>
           <input
             type="number"
@@ -41,6 +41,9 @@ export default function QuizConfig({ config, onConfigChange }: QuizConfigProps) 
             max="50"
             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           />
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            Anzahl der Fragen beim Spielen
+          </p>
         </div>
 
         <div>
@@ -57,6 +60,33 @@ export default function QuizConfig({ config, onConfigChange }: QuizConfigProps) 
             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           />
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="pool-size" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Fragen-Pool Größe (Optional - "Echte Fragen")
+        </label>
+        <input
+          type="number"
+          id="pool-size"
+          value={config.poolSize || ''}
+          onChange={(e) => onConfigChange({ ...config, poolSize: parseInt(e.target.value) || 0 })}
+          min="0"
+          max="100"
+          placeholder="0 = Kein Pool (Standard)"
+          className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+        />
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          {config.poolSize > 0 ? (
+            <>
+              <span className="font-semibold text-blue-600 dark:text-blue-400">Pool-Modus aktiv:</span>
+              {' '}Es werden {config.poolSize} Fragen generiert, aber nur {config.questionCount} zufällig pro Durchlauf ausgewählt.
+              {' '}Jedes Spiel wird anders! 🎲
+            </>
+          ) : (
+            'Leer lassen für normale Generierung oder z.B. 20-30 für abwechslungsreiche Quizze'
+          )}
+        </p>
       </div>
 
       <div>

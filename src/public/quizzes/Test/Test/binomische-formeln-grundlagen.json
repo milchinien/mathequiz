@@ -1,5 +1,9 @@
 {
   "Thema": "Binomische Formeln - Grundlagen",
+  "PoolConfig": {
+    "poolSize": 10,
+    "questionsPerGame": 5
+  },
   "Fragen": [
     {
       "Frage": "Was besagt die erste binomische Formel?",
