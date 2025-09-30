@@ -39,14 +39,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Determine how many questions to generate (use poolSize if > 0, otherwise questionCount)
+    const questionsToGenerate = config.poolSize && config.poolSize > 0 ? config.poolSize : config.questionCount;
+
     // Load prompt template
     const promptTemplatePath = path.join(process.cwd(), 'prompts', 'quiz-generation.txt');
     let promptTemplate = await fs.readFile(promptTemplatePath, 'utf-8');
 
-    // Replace placeholders
+    // Replace placeholders (use questionsToGenerate for actual generation)
     promptTemplate = promptTemplate
       .replace('{{TARGET_AUDIENCE}}', config.targetAudience)
-      .replace('{{QUESTION_COUNT}}', config.questionCount.toString())
+      .replace('{{QUESTION_COUNT}}', questionsToGenerate.toString())
       .replace(/{{ANSWERS_PER_QUESTION}}/g, config.answersPerQuestion.toString())
       .replace('{{ANSWER_TYPE}}', config.allowMultipleAnswers ? 'MultipleAnswer (Mehrfachauswahl möglich)' : 'SingleAnswer (nur eine richtige Antwort)')
       .replace(/{{QUIZ_TITLE}}/g, config.quizTitle);
@@ -110,11 +113,19 @@ export async function POST(request: NextRequest) {
       throw new Error('Ungültiges Quiz-Format');
     }
 
-    // Validate question count
-    if (quiz.Fragen.length !== config.questionCount) {
+    // Add pool configuration if poolSize is set
+    if (config.poolSize && config.poolSize > 0) {
+      quiz.PoolConfig = {
+        poolSize: config.poolSize,
+        questionsPerGame: config.questionCount
+      };
+    }
+
+    // Validate question count (should match questionsToGenerate, not questionCount)
+    if (quiz.Fragen.length !== questionsToGenerate) {
       // Adjust if needed
-      if (quiz.Fragen.length > config.questionCount) {
-        quiz.Fragen = quiz.Fragen.slice(0, config.questionCount);
+      if (quiz.Fragen.length > questionsToGenerate) {
+        quiz.Fragen = quiz.Fragen.slice(0, questionsToGenerate);
       }
     }
 

@@ -7,9 +7,9 @@ interface UserContextType {
   currentUser: string | null;
   users: User[];
   isSessionValid: boolean;
-  setCurrentUser: (username: string) => void;
+  setCurrentUser: (username: string) => Promise<void>;
   addUser: (username: string) => void;
-  removeUser: (username: string) => void;
+  removeUser: (username: string) => Promise<void>;
   logout: () => void;
   checkSession: () => boolean;
 }
@@ -49,26 +49,38 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    // Load users and current user from localStorage
-    const savedUsers = localStorage.getItem('mathequiz_users');
-
-    if (savedUsers) {
+    // Load users from API (with fallback to localStorage)
+    const loadUsers = async () => {
       try {
-        const parsedUsers = JSON.parse(savedUsers);
-        // Filter out users with empty or invalid names
-        const validUsers = parsedUsers.filter((user: User) =>
-          user.name && user.name.trim().length > 0
-        );
-        setUsers(validUsers);
-        // Save cleaned users back to localStorage
-        if (validUsers.length !== parsedUsers.length) {
-          localStorage.setItem('mathequiz_users', JSON.stringify(validUsers));
+        const response = await fetch('/api/users');
+        if (response.ok) {
+          const usersFromAPI = await response.json();
+          setUsers(usersFromAPI);
+          // Sync to localStorage as backup
+          localStorage.setItem('mathequiz_users', JSON.stringify(usersFromAPI));
+        } else {
+          throw new Error('Failed to fetch users from API');
         }
       } catch (error) {
-        console.error('Error parsing saved users:', error);
-        setUsers([]);
+        console.error('Error loading users from API, falling back to localStorage:', error);
+        // Fallback to localStorage
+        const savedUsers = localStorage.getItem('mathequiz_users');
+        if (savedUsers) {
+          try {
+            const parsedUsers = JSON.parse(savedUsers);
+            const validUsers = parsedUsers.filter((user: User) =>
+              user.name && user.name.trim().length > 0
+            );
+            setUsers(validUsers);
+          } catch (error) {
+            console.error('Error parsing saved users:', error);
+            setUsers([]);
+          }
+        }
       }
-    }
+    };
+
+    loadUsers();
 
     // Check if there's a valid session
     const sessionValid = checkSession();
@@ -88,7 +100,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const setCurrentUser = (username: string) => {
+  const setCurrentUser = async (username: string) => {
     // If empty username, treat as logout
     if (!username || username.trim() === '') {
       logout();
@@ -111,27 +123,55 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('mathequiz_current_user', trimmedUsername);
     localStorage.setItem('mathequiz_session', JSON.stringify(session));
 
-    // Update or add user with new lastUsed timestamp
-    const nowISO = now.toISOString();
-    setUsers(prevUsers => {
-      const existingUserIndex = prevUsers.findIndex(u => u.name === trimmedUsername);
-      let updatedUsers;
+    // Save user to API (with fallback to localStorage only)
+    try {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: trimmedUsername })
+      });
 
-      if (existingUserIndex >= 0) {
-        // Update existing user
-        updatedUsers = [...prevUsers];
-        updatedUsers[existingUserIndex] = { ...updatedUsers[existingUserIndex], lastUsed: nowISO };
+      if (response.ok) {
+        const { user } = await response.json();
+        // Update local state with user from API
+        setUsers(prevUsers => {
+          const existingUserIndex = prevUsers.findIndex(u => u.name === user.name);
+          let updatedUsers;
+
+          if (existingUserIndex >= 0) {
+            updatedUsers = [...prevUsers];
+            updatedUsers[existingUserIndex] = user;
+          } else {
+            updatedUsers = [...prevUsers, user];
+          }
+
+          updatedUsers.sort((a, b) => new Date(b.lastUsed).getTime() - new Date(a.lastUsed).getTime());
+          localStorage.setItem('mathequiz_users', JSON.stringify(updatedUsers));
+          return updatedUsers;
+        });
       } else {
-        // Add new user
-        updatedUsers = [...prevUsers, { name: trimmedUsername, lastUsed: nowISO }];
+        throw new Error('Failed to save user to API');
       }
+    } catch (error) {
+      console.error('Error saving user to API, using localStorage only:', error);
+      // Fallback to localStorage only
+      const nowISO = now.toISOString();
+      setUsers(prevUsers => {
+        const existingUserIndex = prevUsers.findIndex(u => u.name === trimmedUsername);
+        let updatedUsers;
 
-      // Sort by lastUsed (most recent first)
-      updatedUsers.sort((a, b) => new Date(b.lastUsed).getTime() - new Date(a.lastUsed).getTime());
+        if (existingUserIndex >= 0) {
+          updatedUsers = [...prevUsers];
+          updatedUsers[existingUserIndex] = { ...updatedUsers[existingUserIndex], lastUsed: nowISO };
+        } else {
+          updatedUsers = [...prevUsers, { name: trimmedUsername, lastUsed: nowISO }];
+        }
 
-      localStorage.setItem('mathequiz_users', JSON.stringify(updatedUsers));
-      return updatedUsers;
-    });
+        updatedUsers.sort((a, b) => new Date(b.lastUsed).getTime() - new Date(a.lastUsed).getTime());
+        localStorage.setItem('mathequiz_users', JSON.stringify(updatedUsers));
+        return updatedUsers;
+      });
+    }
   };
 
   const addUser = (username: string) => {
@@ -152,7 +192,19 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  const removeUser = (username: string) => {
+  const removeUser = async (username: string) => {
+    // Try to delete from API first
+    try {
+      await fetch('/api/users', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: username })
+      });
+    } catch (error) {
+      console.error('Error deleting user from API:', error);
+    }
+
+    // Update local state
     setUsers(prevUsers => {
       const updatedUsers = prevUsers.filter(u => u.name !== username);
       localStorage.setItem('mathequiz_users', JSON.stringify(updatedUsers));

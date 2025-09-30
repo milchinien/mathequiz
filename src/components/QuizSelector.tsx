@@ -4,8 +4,23 @@ import { useState, useEffect } from 'react';
 import { QuizStructure } from '@/types/quiz';
 import Link from 'next/link';
 import ModeToggle from '@/components/ModeToggle';
+import { useViewMode } from '@/contexts/ViewModeContext';
+import SidebarQuizSelector from '@/components/SidebarQuizSelector';
+import ViewModeToggle from '@/components/ViewModeToggle';
 
 export default function QuizSelector() {
+  const { viewMode } = useViewMode();
+
+  // If sidebar mode is selected, render the SidebarQuizSelector
+  if (viewMode === 'sidebar') {
+    return <SidebarQuizSelector />;
+  }
+
+  // Otherwise, render the original grid-based QuizSelector
+  return <GridQuizSelector />;
+}
+
+function GridQuizSelector() {
   const [structure, setStructure] = useState<QuizStructure>({});
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>('');
@@ -139,8 +154,10 @@ export default function QuizSelector() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Quiz-Auswahl</h1>
-
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Quiz-Auswahl</h1>
+        <ViewModeToggle />
+      </div>
 
       <ModeToggle mode={mode} onModeChange={setMode} />
 

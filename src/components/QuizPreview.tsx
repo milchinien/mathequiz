@@ -11,13 +11,13 @@ interface QuizPreviewProps {
 export default function QuizPreview({ quiz, onSave, onEdit }: QuizPreviewProps) {
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4 text-center">Quiz-Vorschau</h2>
-        <h3 className="text-xl font-semibold text-center text-gray-700 mb-6">{quiz.Thema}</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h2 className="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-gray-100">Quiz-Vorschau</h2>
+        <h3 className="text-xl font-semibold text-center text-gray-700 dark:text-gray-300 mb-6">{quiz.Thema}</h3>
 
-        <div className="mb-6 p-4 bg-blue-50 rounded-lg">
-          <h4 className="font-semibold text-blue-800 mb-2">Übersicht:</h4>
-          <ul className="text-sm text-blue-700 space-y-1">
+        <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+          <h4 className="font-semibold text-blue-800 dark:text-blue-400 mb-2">Übersicht:</h4>
+          <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
             <li>• Anzahl Fragen: {quiz.Fragen.length}</li>
             <li>• Fragetypen: {
               quiz.Fragen.some(f => f.Typ === 'MultipleAnswer') && quiz.Fragen.some(f => f.Typ === 'SingleAnswer')
@@ -35,14 +35,14 @@ export default function QuizPreview({ quiz, onSave, onEdit }: QuizPreviewProps) 
 
       <div className="space-y-4">
         {quiz.Fragen.map((frage, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md p-6">
+          <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
             <div className="flex items-start gap-4">
-              <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+              <div className="bg-blue-500 dark:bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
                 {index + 1}
               </div>
               <div className="flex-1">
-                <h4 className="font-semibold text-lg mb-2">{frage.Frage}</h4>
-                <p className="text-sm text-gray-600 mb-3">
+                <h4 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">{frage.Frage}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   Typ: {frage.Typ === 'SingleAnswer' ? 'Single Choice' : 'Multiple Choice'}
                 </p>
 
@@ -52,23 +52,23 @@ export default function QuizPreview({ quiz, onSave, onEdit }: QuizPreviewProps) 
                       key={aIndex}
                       className={`p-3 rounded-lg border ${
                         antwort.Richtig
-                          ? 'bg-green-50 border-green-200'
-                          : 'bg-gray-50 border-gray-200'
+                          ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800'
+                          : 'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
                       }`}
                     >
                       <div className="flex items-start gap-2">
-                        <span className={`font-bold ${antwort.Richtig ? 'text-green-600' : 'text-gray-500'}`}>
+                        <span className={`font-bold ${antwort.Richtig ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}>
                           {String.fromCharCode(65 + aIndex)}:
                         </span>
                         <div className="flex-1">
-                          <p className={antwort.Richtig ? 'text-green-800 font-medium' : 'text-gray-700'}>
+                          <p className={antwort.Richtig ? 'text-green-800 dark:text-green-300 font-medium' : 'text-gray-700 dark:text-gray-300'}>
                             {antwort.Antwort}
                             {antwort.Richtig && (
-                              <span className="ml-2 text-green-600 text-sm">✓ Richtig</span>
+                              <span className="ml-2 text-green-600 dark:text-green-400 text-sm">✓ Richtig</span>
                             )}
                           </p>
                           {antwort.Kommentar && (
-                            <p className={`text-sm mt-1 ${antwort.Richtig ? 'text-green-600' : 'text-gray-600'}`}>
+                            <p className={`text-sm mt-1 ${antwort.Richtig ? 'text-green-600 dark:text-green-400' : 'text-gray-600 dark:text-gray-400'}`}>
                               {antwort.Kommentar}
                             </p>
                           )}

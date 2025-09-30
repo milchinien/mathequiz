@@ -29,7 +29,7 @@ function QuizContent() {
   const [sessionId] = useState(() => generateSessionId());
   const [sessionStartTime] = useState(() => new Date());
 
-  // Shuffle questions once when quiz is loaded
+  // Shuffle questions and select subset from pool if configured
   const shuffledQuestions = useMemo<ShuffledQuestion[]>(() => {
     if (!quiz?.Fragen) return [];
 
@@ -43,6 +43,11 @@ function QuizContent() {
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    // If pool is configured, select only questionsPerGame from the shuffled pool
+    if (quiz.PoolConfig && quiz.PoolConfig.questionsPerGame < shuffled.length) {
+      return shuffled.slice(0, quiz.PoolConfig.questionsPerGame);
     }
 
     return shuffled;
@@ -236,6 +241,11 @@ function QuizContent() {
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
             Modus: {mode === 'immediate' ? 'Sofort-Feedback' : 'Zusammenfassung am Ende'}
           </p>
+          {quiz.PoolConfig && (
+            <p className="text-sm text-blue-600 dark:text-blue-400 mt-1 font-medium">
+              🎲 Pool-Modus: {shuffledQuestions.length} von {quiz.PoolConfig.poolSize} Fragen (jedes Spiel anders!)
+            </p>
+          )}
         </div>
 
         <QuizQuestion

@@ -108,7 +108,7 @@ function EditContent() {
     }
   };
 
-  const updateQuestion = (questionIndex: number, field: 'question', value: string) => {
+  const updateQuestion = (questionIndex: number, field: 'Frage' | 'explanation', value: string) => {
     if (currentQuiz) {
       const updatedQuestions = [...currentQuiz.Fragen];
       updatedQuestions[questionIndex] = {
@@ -139,12 +139,12 @@ function EditContent() {
     if (currentQuiz) {
       const newQuestion = {
         Frage: 'Neue Frage',
-        Typ: 'SingleAnswer' as const,
+        Typ: 'MultipleAnswer' as const,
         Antworten: [
-          { Antwort: 'Antwort 1', Richtig: true, Kommentar: 'Richtige Antwort' },
-          { Antwort: 'Antwort 2', Richtig: false, Kommentar: 'Falsche Antwort' },
-          { Antwort: 'Antwort 3', Richtig: false, Kommentar: 'Falsche Antwort' },
-          { Antwort: 'Antwort 4', Richtig: false, Kommentar: 'Falsche Antwort' }
+          { Antwort: 'Antwort 1', Richtig: true, Kommentar: '' },
+          { Antwort: 'Antwort 2', Richtig: false, Kommentar: '' },
+          { Antwort: 'Antwort 3', Richtig: false, Kommentar: '' },
+          { Antwort: 'Antwort 4', Richtig: false, Kommentar: '' }
         ]
       };
       setCurrentQuiz({
@@ -167,7 +167,7 @@ function EditContent() {
       updatedQuestions[questionIndex].Antworten.push({
         Antwort: 'Neue Antwort',
         Richtig: false,
-        Kommentar: 'Neuer Kommentar'
+        Kommentar: ''
       });
       setCurrentQuiz({ ...currentQuiz, Fragen: updatedQuestions });
     }
@@ -318,7 +318,7 @@ function EditContent() {
                       </label>
                       <textarea
                         value={question.Frage}
-                        onChange={(e) => updateQuestion(questionIndex, 'question', e.target.value)}
+                        onChange={(e) => updateQuestion(questionIndex, 'Frage', e.target.value)}
                         className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 resize-none"
                         rows={2}
                       />
@@ -364,8 +364,6 @@ function EditContent() {
                         ))}
                       </div>
                     </div>
-
-                    {/* Explanation */}
                   </div>
                 </div>
               ))}

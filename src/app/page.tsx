@@ -1,10 +1,12 @@
 'use client';
 
 import { useProtectedRoute } from '@/hooks/useProtectedRoute';
+import { useViewMode } from '@/contexts/ViewModeContext';
 import QuizSelector from '@/components/QuizSelector';
 
 export default function Home() {
   const { isAuthenticated, currentUser, isLoading } = useProtectedRoute();
+  const { viewMode } = useViewMode();
 
   // Show loading while redirecting
   if (isLoading || !isAuthenticated) {
@@ -18,6 +20,16 @@ export default function Home() {
     );
   }
 
+  // Sidebar view should take full screen without padding
+  if (viewMode === 'sidebar') {
+    return (
+      <main className="h-screen overflow-hidden">
+        <QuizSelector />
+      </main>
+    );
+  }
+
+  // Grid view with normal layout
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-8">
       <div className="container mx-auto px-4">

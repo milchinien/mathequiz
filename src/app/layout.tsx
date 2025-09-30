@@ -4,6 +4,8 @@ import "./globals.css";
 import { DarkModeProvider } from "@/contexts/DarkModeContext";
 import { UserProvider } from "@/contexts/UserContext";
 import { HistoryProvider } from "@/contexts/HistoryContext";
+import { SettingsProvider } from "@/contexts/SettingsContext";
+import { ViewModeProvider } from "@/contexts/ViewModeContext";
 import TaskBar from "@/components/TaskBar";
 
 const geistSans = Geist({
@@ -53,12 +55,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors`}
       >
         <DarkModeProvider>
-          <UserProvider>
-            <HistoryProvider>
-              <TaskBar />
-              {children}
-            </HistoryProvider>
-          </UserProvider>
+          <ViewModeProvider>
+            <SettingsProvider>
+              <UserProvider>
+                <HistoryProvider>
+                  <TaskBar />
+                  {children}
+                </HistoryProvider>
+              </UserProvider>
+            </SettingsProvider>
+          </ViewModeProvider>
         </DarkModeProvider>
       </body>
     </html>

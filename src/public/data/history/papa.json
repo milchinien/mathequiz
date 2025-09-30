@@ -1,0 +1,152 @@
+[
+  {
+    "id": "session_1759229392591_9ietmqbvv",
+    "user": "Papa",
+    "timestamp": "2025-09-30T10:49:52.591Z",
+    "quiz": {
+      "category": "Test",
+      "subcategory": "Test",
+      "name": "Testquiz",
+      "path": [
+        "Test",
+        "Test",
+        "testquiz.json"
+      ]
+    },
+    "questions": [
+      {
+        "question": "Welcher Kontinent ist der zweitgrößte der Welt?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Afrika"
+        ],
+        "correctAnswers": [
+          "Afrika"
+        ],
+        "isCorrect": true,
+        "originalIndex": 1
+      },
+      {
+        "question": "Welches dieser Länder hat eine Flagge mit einem Kreuz?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Schweden"
+        ],
+        "correctAnswers": [
+          "Schweden"
+        ],
+        "isCorrect": true,
+        "originalIndex": 3
+      },
+      {
+        "question": "Welche der folgenden Länder liegen vollständig auf der Nordhalbkugel?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Russland",
+          "Kanada"
+        ],
+        "correctAnswers": [
+          "Kanada",
+          "Russland"
+        ],
+        "isCorrect": true,
+        "originalIndex": 5
+      },
+      {
+        "question": "Welcher Kontinent hat die meisten Länder?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Europa"
+        ],
+        "correctAnswers": [
+          "Afrika"
+        ],
+        "isCorrect": false,
+        "originalIndex": 7
+      },
+      {
+        "question": "Welche dieser Städte ist KEINE Hauptstadt?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Sydney"
+        ],
+        "correctAnswers": [
+          "Sydney"
+        ],
+        "isCorrect": true,
+        "originalIndex": 4
+      },
+      {
+        "question": "Welche der folgenden Länder liegen vollständig auf der Nordhalbkugel?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Russland",
+          "Kanada"
+        ],
+        "correctAnswers": [
+          "Kanada",
+          "Russland"
+        ],
+        "isCorrect": true,
+        "originalIndex": 5
+      },
+      {
+        "question": "Welche der folgenden Länder grenzt NICHT an Deutschland?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Spanien"
+        ],
+        "correctAnswers": [
+          "Spanien"
+        ],
+        "isCorrect": true,
+        "originalIndex": 2
+      },
+      {
+        "question": "Welche dieser Länder sind Inselstaaten?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Indonesien",
+          "Japan"
+        ],
+        "correctAnswers": [
+          "Japan",
+          "Indonesien"
+        ],
+        "isCorrect": true,
+        "originalIndex": 8
+      },
+      {
+        "question": "Welches dieser Länder hat eine Flagge mit einem Kreuz?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Schweden"
+        ],
+        "correctAnswers": [
+          "Schweden"
+        ],
+        "isCorrect": true,
+        "originalIndex": 3
+      },
+      {
+        "question": "Welcher dieser Ozeane ist der größte?",
+        "type": "MultipleAnswer",
+        "userAnswers": [
+          "Pazifik"
+        ],
+        "correctAnswers": [
+          "Pazifik"
+        ],
+        "isCorrect": true,
+        "originalIndex": 6
+      }
+    ],
+    "score": {
+      "correct": 9,
+      "total": 10,
+      "percentage": 90
+    },
+    "mode": "immediate",
+    "duration": 95
+  }
+]

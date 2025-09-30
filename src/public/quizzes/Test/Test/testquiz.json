@@ -1,0 +1,265 @@
+{
+  "Thema": "Testquiz",
+  "Fragen": [
+    {
+      "Frage": "Welche Farben hat die Flagge von Deutschland?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Schwarz",
+          "Richtig": true,
+          "Kommentar": "Schwarz ist die oberste Farbe der deutschen Flagge."
+        },
+        {
+          "Antwort": "Rot",
+          "Richtig": true,
+          "Kommentar": "Rot ist die mittlere Farbe der deutschen Flagge."
+        },
+        {
+          "Antwort": "Gelb",
+          "Richtig": false,
+          "Kommentar": "Gelb ist nicht korrekt, die untere Farbe ist Gold."
+        },
+        {
+          "Antwort": "Gold",
+          "Richtig": true,
+          "Kommentar": "Gold ist die unterste Farbe der deutschen Flagge."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Kontinent ist der zweitgrößte der Welt?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Afrika",
+          "Richtig": true,
+          "Kommentar": "Afrika ist nach Asien der zweitgrößte Kontinent."
+        },
+        {
+          "Antwort": "Europa",
+          "Richtig": false,
+          "Kommentar": "Europa ist nicht der zweitgrößte Kontinent, sondern einer der kleineren."
+        },
+        {
+          "Antwort": "Nordamerika",
+          "Richtig": false,
+          "Kommentar": "Nordamerika ist nicht der zweitgrößte Kontinent."
+        },
+        {
+          "Antwort": "Südamerika",
+          "Richtig": false,
+          "Kommentar": "Südamerika ist auch nicht der zweitgrößte Kontinent."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche der folgenden Länder grenzt NICHT an Deutschland?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Frankreich",
+          "Richtig": false,
+          "Kommentar": "Frankreich grenzt an Deutschland im Westen."
+        },
+        {
+          "Antwort": "Spanien",
+          "Richtig": true,
+          "Kommentar": "Spanien grenzt nicht an Deutschland."
+        },
+        {
+          "Antwort": "Polen",
+          "Richtig": false,
+          "Kommentar": "Polen grenzt an Deutschland im Osten."
+        },
+        {
+          "Antwort": "Österreich",
+          "Richtig": false,
+          "Kommentar": "Österreich grenzt an Deutschland im Süden."
+        }
+      ]
+    },
+    {
+      "Frage": "Welches dieser Länder hat eine Flagge mit einem Kreuz?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Schweden",
+          "Richtig": true,
+          "Kommentar": "Die schwedische Flagge hat ein gelbes Kreuz auf blauem Grund."
+        },
+        {
+          "Antwort": "Italien",
+          "Richtig": false,
+          "Kommentar": "Die italienische Flagge hat keine Kreuzsymbolik, sondern ist grün, weiß und rot gestreift."
+        },
+        {
+          "Antwort": "Japan",
+          "Richtig": false,
+          "Kommentar": "Die japanische Flagge zeigt einen roten Punkt auf weißem Grund, kein Kreuz."
+        },
+        {
+          "Antwort": "Kanada",
+          "Richtig": false,
+          "Kommentar": "Die kanadische Flagge zeigt ein Ahornblatt, kein Kreuz."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche dieser Städte ist KEINE Hauptstadt?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Berlin",
+          "Richtig": false,
+          "Kommentar": "Berlin ist die Hauptstadt von Deutschland."
+        },
+        {
+          "Antwort": "Madrid",
+          "Richtig": false,
+          "Kommentar": "Madrid ist die Hauptstadt von Spanien."
+        },
+        {
+          "Antwort": "Sydney",
+          "Richtig": true,
+          "Kommentar": "Sydney ist nicht die Hauptstadt von Australien, das ist Canberra."
+        },
+        {
+          "Antwort": "Paris",
+          "Richtig": false,
+          "Kommentar": "Paris ist die Hauptstadt von Frankreich."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche der folgenden Länder liegen vollständig auf der Nordhalbkugel?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Kanada",
+          "Richtig": true,
+          "Kommentar": "Kanada liegt vollständig auf der Nordhalbkugel."
+        },
+        {
+          "Antwort": "Brasilien",
+          "Richtig": false,
+          "Kommentar": "Brasilien liegt teils auf der Nord- und teils auf der Südhalbkugel."
+        },
+        {
+          "Antwort": "Russland",
+          "Richtig": true,
+          "Kommentar": "Russland liegt vollständig auf der Nordhalbkugel."
+        },
+        {
+          "Antwort": "Indonesien",
+          "Richtig": false,
+          "Kommentar": "Indonesien liegt teils auf der Nord- und teils auf der Südhalbkugel."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher dieser Ozeane ist der größte?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Atlantik",
+          "Richtig": false,
+          "Kommentar": "Der Atlantik ist nicht der größte Ozean."
+        },
+        {
+          "Antwort": "Indischer Ozean",
+          "Richtig": false,
+          "Kommentar": "Der Indische Ozean ist kleiner als der Pazifik."
+        },
+        {
+          "Antwort": "Pazifik",
+          "Richtig": true,
+          "Kommentar": "Der Pazifik ist der größte Ozean der Welt."
+        },
+        {
+          "Antwort": "Arktischer Ozean",
+          "Richtig": false,
+          "Kommentar": "Der Arktische Ozean ist der kleinste der Ozeane."
+        }
+      ]
+    },
+    {
+      "Frage": "Welcher Kontinent hat die meisten Länder?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Afrika",
+          "Richtig": true,
+          "Kommentar": "Afrika hat die meisten Länder aller Kontinente."
+        },
+        {
+          "Antwort": "Asien",
+          "Richtig": false,
+          "Kommentar": "Asien hat viele Länder, aber weniger als Afrika."
+        },
+        {
+          "Antwort": "Europa",
+          "Richtig": false,
+          "Kommentar": "Europa hat weniger Länder als Afrika."
+        },
+        {
+          "Antwort": "Südamerika",
+          "Richtig": false,
+          "Kommentar": "Südamerika hat deutlich weniger Länder als Afrika."
+        }
+      ]
+    },
+    {
+      "Frage": "Welche dieser Länder sind Inselstaaten?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "Japan",
+          "Richtig": true,
+          "Kommentar": "Japan ist ein Inselstaat im Pazifik."
+        },
+        {
+          "Antwort": "Deutschland",
+          "Richtig": false,
+          "Kommentar": "Deutschland ist kein Inselstaat, es liegt auf dem europäischen Festland."
+        },
+        {
+          "Antwort": "Indonesien",
+          "Richtig": true,
+          "Kommentar": "Indonesien besteht aus vielen Inseln und ist ein Inselstaat."
+        },
+        {
+          "Antwort": "Brasilien",
+          "Richtig": false,
+          "Kommentar": "Brasilien liegt auf dem südamerikanischen Festland und ist kein Inselstaat."
+        }
+      ]
+    },
+    {
+      "Frage": "Welches dieser Länder hat eine Flagge mit einem Stern?",
+      "Typ": "MultipleAnswer",
+      "Antworten": [
+        {
+          "Antwort": "China",
+          "Richtig": true,
+          "Kommentar": "Die Flagge von China hat einen großen und vier kleine Sterne."
+        },
+        {
+          "Antwort": "Italien",
+          "Richtig": false,
+          "Kommentar": "Die italienische Flagge hat keine Sterne."
+        },
+        {
+          "Antwort": "Mexiko",
+          "Richtig": false,
+          "Kommentar": "Die mexikanische Flagge hat keinen Stern, sondern ein Wappen."
+        },
+        {
+          "Antwort": "Schweiz",
+          "Richtig": false,
+          "Kommentar": "Die schweizerische Flagge hat ein Kreuz, keinen Stern."
+        }
+      ]
+    }
+  ]
+}
