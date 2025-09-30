@@ -31,13 +31,14 @@ This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v3. T
    - `/api/history` - Quiz session history management
 
 3. **Core Pages**:
-   - Home page (`/`) - Protected quiz selector interface with user welcome message and adaptive column sizing
+   - Home page (`/`) - Protected quiz selector interface with switchable view modes (grid/sidebar) and user welcome message
    - Quiz page (`/quiz/[...path]`) - Protected dynamic quiz player with history tracking and shuffled questions/answers
    - Generate page (`/generate`) - Protected AI-powered creation interface with type selection (Category/Subcategory/Quiz)
    - Edit page (`/edit`) - Protected page for quiz editing and management
    - Login page (`/login`) - User authentication with recent users and new user creation
    - History page (`/history`) - Personal quiz session history and performance tracking
    - Profile page (`/profile`) - User profile management and statistics
+   - Settings page (`/settings`) - User preferences including view mode selection and appearance settings
 
 4. **Quiz Generation System**:
    - **Creation Type Selection**: Choose between creating categories, subcategories, or quizzes
@@ -66,26 +67,40 @@ This is a **Next.js 15** quiz application with TypeScript and Tailwind CSS v3. T
 
 8. **Component Architecture**: React components in `src/components/` handle quiz display, generation UI, questions, results, feedback toasts, user authentication, and CRUD operations.
 
-9. **Dark Mode System**:
-   - **Context-Based**: React Context (`DarkModeContext`) with localStorage persistence
-   - **System Detection**: Automatic detection of user's system color scheme preference
-   - **Navigation Toggle**: Dark mode toggle integrated into TaskBar options dropdown
-   - **Comprehensive Styling**: All components support light/dark themes using Tailwind CSS class-based dark mode
-   - **Form Compatibility**: All input fields, text areas, and form elements properly styled for dark mode
-   - **Smooth Transitions**: CSS transitions for seamless theme switching
+9. **View Mode System**:
+   - **Two Display Modes**: Grid view (traditional 3-column layout) and Sidebar view (chat-like interface)
+   - **Context-Based**: React Context (`ViewModeContext`) with localStorage persistence
+   - **Grid View**: Classic three-column adaptive layout with category → subcategory → quiz selection
+   - **Sidebar View**: Full-height left sidebar (384px) with hierarchical navigation, inspired by chat interfaces like Gemini
+   - **Sidebar Features**:
+     - Collapsible categories and subcategories
+     - Quiz details panel on the right side
+     - Integrated delete functionality for quizzes
+     - Larger fonts and icons for better readability
+     - Zero padding from screen edges for immersive experience
+   - **Toggle Component**: ViewModeToggle button available in quiz selector
+   - **Settings Integration**: View mode preference configurable in Settings page under "Darstellung" tab
 
-10. **Navigation System**:
+10. **Dark Mode System**:
+    - **Context-Based**: React Context (`DarkModeContext`) with localStorage persistence
+    - **System Detection**: Automatic detection of user's system color scheme preference
+    - **Navigation Toggle**: Dark mode toggle integrated into TaskBar options dropdown
+    - **Comprehensive Styling**: All components support light/dark themes using Tailwind CSS class-based dark mode
+    - **Form Compatibility**: All input fields, text areas, and form elements properly styled for dark mode
+    - **Smooth Transitions**: CSS transitions for seamless theme switching
+
+11. **Navigation System**:
     - **TaskBar**: Main navigation with "Lernen", "Quiz erstellen", and "Quiz bearbeiten" tabs
-    - **Options Dropdown**: Three-dots menu with user management, dark mode toggle, and logout functionality
+    - **Options Dropdown**: Three-dots menu with user management, settings access, dark mode toggle, and logout functionality
     - **User Profile**: Integrated user display with profile access and switching options
     - **Adaptive Layout**: Responsive design with mobile-friendly navigation
     - **Active States**: Visual indicators for current page/section
 
-11. **CRUD Operations**:
-    - **Edit/Delete Buttons**: All quiz selector items have inline edit and delete actions
+12. **CRUD Operations**:
+    - **Edit/Delete Buttons**: Quiz selector items have inline edit and delete actions (grid view), integrated delete button in sidebar view
     - **Category Management**: Full CRUD operations for categories and subcategories
-    - **Quiz Management**: Edit and delete individual quiz files
-    - **Confirmation Dialogs**: Safe deletion with user confirmation (TODO: implement modals)
+    - **Quiz Management**: Edit and delete individual quiz files with confirmation dialogs
+    - **Confirmation Dialogs**: Safe deletion with browser-native confirm dialogs
     - **Inline Editing**: Edit category/subcategory names directly in the interface (TODO: implement)
 
 ## Project Structure
@@ -127,14 +142,18 @@ The codebase is organized within the `src/` directory as the main Next.js applic
 
 ## UI/UX Features
 
-- **Adaptive Quiz Selector**: Dynamic column sizing that expands the active selection step
+- **Dual View Modes**: Toggle between grid view (3-column adaptive) and sidebar view (chat-like interface)
+- **Adaptive Quiz Selector**: Dynamic column sizing that expands the active selection step (grid view)
+- **Sidebar Navigation**: Full-height collapsible hierarchical navigation with larger, more readable elements
 - **Edit/Delete Actions**: Inline buttons for managing all categories, subcategories, and quizzes
 - **Comprehensive Dark Mode**: Full dark mode support across all components and form elements
 - **Enhanced Navigation**: TaskBar with three main sections and integrated options menu
+- **Settings Page**: Centralized user preferences including view mode selection and appearance options
 - **User Profile Integration**: Welcome messages and user avatars throughout the interface
 - **Mobile Responsive**: Fully responsive design that works on all screen sizes
 - **Visual Feedback**: Hover effects, transitions, and clear visual states for all interactive elements
 - **Loading States**: Proper loading indicators during authentication and page transitions
+- **Immersive Experience**: Sidebar view with zero padding for full-screen utilization
 
 ## Hints
 
